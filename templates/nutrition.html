@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrition Program — Let's Be Ready</title>
+  <meta name="description" content="Daily nutrition is a cornerstone of our preschool program. In rural Guatemala, many children arrive hungry. We make sure every student eats before they learn.">
+  <meta property="og:title" content="Nutrition Program — Let's Be Ready">
+  <meta property="og:description" content="You can't learn when you're hungry. Our nutrition program feeds every student, every day.">
+  <meta property="og:image" content="{{og_image_url}}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="{{favicon_url}}">
+
+  <style>
+    /* ========================================
+       NUTRITION PAGE — Editorial / Documentary
+       ======================================== */
+
+    /* --- Grain texture overlay for dark sections --- */
+    .nut-grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* --- Entrance animations --- */
+    @keyframes nut-rise {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes nut-fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes nut-widen {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes nut-count-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .nut-animate {
+      opacity: 0;
+      animation: nut-rise 0.9s var(--ease-out) forwards;
+    }
+    .nut-animate--d1 { animation-delay: 0.1s; }
+    .nut-animate--d2 { animation-delay: 0.25s; }
+    .nut-animate--d3 { animation-delay: 0.4s; }
+    .nut-animate--d4 { animation-delay: 0.55s; }
+
+    /* ---- HERO — Cinematic full bleed ---- */
+    .nut-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      max-height: 1000px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .nut-hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transform: scale(1.03);
+      animation: nut-fade 1.2s ease forwards;
+    }
+
+    .nut-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--dark) 0%,
+        rgba(30, 23, 60, 0.85) 25%,
+        rgba(30, 23, 60, 0.4) 55%,
+        rgba(30, 23, 60, 0.15) 100%
+      );
+    }
+
+    .nut-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 0 var(--space-xl) var(--space-4xl);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .nut-hero__eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: var(--space-lg);
+    }
+
+    .nut-hero__content h1 {
+      color: var(--white);
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      max-width: 700px;
+    }
+
+    .nut-hero__content h1 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+
+    .nut-hero__content p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      margin-top: var(--space-xl);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+
+    /* Yellow accent bar under hero */
+    .nut-hero__bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--yellow);
+      z-index: 3;
+      transform-origin: left;
+      animation: nut-widen 1s 0.6s var(--ease-out) forwards;
+      transform: scaleX(0);
+    }
+
+
+    /* ---- STATS — Massive numbers, dark, staggered ---- */
+    .nut-stats {
+      background: var(--dark);
+      padding: var(--space-5xl) var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nut-stats__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4xl);
+      align-items: start;
+    }
+
+    .nut-stat {
+      position: relative;
+      padding-left: var(--space-xl);
+    }
+
+    .nut-stat::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--yellow);
+      border-radius: 2px;
+    }
+
+    .nut-stat:nth-child(2) {
+      margin-top: var(--space-3xl);
+    }
+
+    .nut-stat__number {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 12vw, 8.5rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: var(--yellow);
+    }
+
+    .nut-stat__text {
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6;
+      max-width: 320px;
+      margin-top: var(--space-md);
+    }
+
+
+    /* ---- THE TURN — Dramatic split ---- */
+    .nut-turn {
+      background: var(--warm-white);
+    }
+
+    .nut-turn__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 75vh;
+    }
+
+    .nut-turn__photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nut-turn__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nut-turn__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-4xl) var(--space-3xl);
+      position: relative;
+    }
+
+    .nut-turn__text h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--dark);
+    }
+
+    /* Yellow marker highlight effect */
+    .nut-turn__text h2 em {
+      font-style: normal;
+      position: relative;
+      display: inline;
+    }
+    .nut-turn__text h2 em::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: 2px;
+      height: 0.35em;
+      background: var(--yellow);
+      opacity: 0.5;
+      z-index: -1;
+      border-radius: 2px;
+    }
+
+    .nut-turn__text p {
+      margin-top: var(--space-xl);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 420px;
+    }
+
+    .nut-turn__numbers {
+      display: flex;
+      gap: var(--space-2xl);
+      margin-top: var(--space-3xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--border);
+    }
+
+    .nut-turn__num-block strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .nut-turn__num-block span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+
+    /* ---- QUOTE — Dark, intimate ---- */
+    .nut-quote {
+      background: var(--dark);
+      padding: var(--space-5xl) var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Giant decorative quotation mark */
+    .nut-quote__mark {
+      position: absolute;
+      top: -0.1em;
+      left: 6%;
+      font-size: clamp(18rem, 35vw, 30rem);
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--yellow);
+      opacity: 0.06;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .nut-quote__inner {
+      max-width: var(--max-width-narrow);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nut-quote__yellow-bar {
+      width: 48px;
+      height: 3px;
+      background: var(--yellow);
+      margin-bottom: var(--space-2xl);
+      border-radius: 2px;
+    }
+
+    .nut-quote__inner blockquote {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nut-quote__inner blockquote p {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.8vw, 2.15rem);
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--white);
+      font-style: italic;
+      max-width: none;
+    }
+
+    .nut-quote__inner cite {
+      display: block;
+      margin-top: var(--space-xl);
+      font-size: 0.9rem;
+      font-style: normal;
+      color: var(--yellow);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+
+    /* ---- CTA — Emotionally charged ---- */
+    .nut-cta {
+      padding: var(--space-5xl) var(--space-xl);
+      text-align: center;
+      background: var(--warm-white);
+      position: relative;
+    }
+
+    .nut-cta__inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .nut-cta h2 {
+      font-size: clamp(2.2rem, 5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--dark);
+    }
+
+    .nut-cta h2 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .nut-cta .btn {
+      margin-top: var(--space-2xl);
+      padding: 1rem 3rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .nut-cta__trust {
+      margin-top: var(--space-xl);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      letter-spacing: 0.01em;
+    }
+
+    .nut-cta__trust span:nth-child(2) {
+      opacity: 0.4;
+    }
+
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .nut-hero {
+        height: 85vh;
+        min-height: 500px;
+      }
+
+      .nut-hero__content {
+        padding-bottom: var(--space-3xl);
+      }
+
+      .nut-stats__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+
+      .nut-stat:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .nut-turn__grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .nut-turn__photo {
+        height: 55vh;
+        max-height: 400px;
+      }
+
+      .nut-turn__text {
+        padding: var(--space-2xl) var(--space-xl);
+      }
+
+      .nut-turn__numbers {
+        flex-direction: column;
+        gap: var(--space-lg);
+      }
+
+      .nut-cta h2 {
+        font-size: clamp(2rem, 8vw, 2.75rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--hero" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="{{logo_url}}" alt="{{site_name}}" width="40" height="40">
+        {{site_name}}
+      </a>
+      <ul class="nav__links">
+        <li><a href="curriculum.html" class="nav__link">Curriculum</a></li>
+        <li><a href="nutrition.html" class="nav__link nav__link--active">Nutrition</a></li>
+        <li><a href="partners.html" class="nav__link">Partners</a></li>
+      </ul>
+      <a href="donate.html" class="btn btn-primary btn-sm nav__cta">Donate</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="curriculum.html" class="mobile-menu__link">Curriculum</a></li>
+      <li><a href="nutrition.html" class="mobile-menu__link">Nutrition</a></li>
+      <li><a href="partners.html" class="mobile-menu__link">Partners</a></li>
+      <li><a href="donate.html" class="btn btn-primary btn-lg" style="margin-top:1rem;">Donate</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ====== HERO — Full bleed, cinematic ====== -->
+  <section class="nut-hero">
+    <img
+      src="{{nutrition_hero_image}}"
+      alt="{{nutrition_hero_image_alt}}"
+      class="nut-hero__img"
+      loading="eager"
+    >
+    <div class="nut-hero__overlay"></div>
+    <div class="nut-hero__content">
+      <span class="nut-hero__eyebrow nut-animate nut-animate--d1">Nutrition Program</span>
+      <h1 class="nut-animate nut-animate--d2">{{nutrition_headline}}</h1>
+      <p class="nut-animate nut-animate--d3">{{nutrition_subheadline}}</p>
+    </div>
+    <div class="nut-hero__bar"></div>
+  </section>
+
+
+  <!-- ====== STATS — Massive yellow numbers on dark ====== -->
+  <section class="nut-stats nut-grain">
+    <div class="nut-stats__inner">
+      <div class="nut-stat">
+        <div class="nut-stat__number" data-countup="{{nutrition_stat1_value}}">{{nutrition_stat1_value}}</div>
+        <div class="nut-stat__text">{{nutrition_stat1_context}}</div>
+      </div>
+      <div class="nut-stat">
+        <div class="nut-stat__number" data-countup="{{nutrition_stat2_value}}">{{nutrition_stat2_value}}</div>
+        <div class="nut-stat__text">{{nutrition_stat2_context}}</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== THE TURN — Photo + text ====== -->
+  <section class="nut-turn">
+    <div class="nut-turn__grid">
+      <div class="nut-turn__photo">
+        <img
+          src="{{nutrition_turn_image}}"
+          alt="{{nutrition_turn_image_alt}}"
+          loading="lazy"
+        >
+      </div>
+      <div class="nut-turn__text">
+        <h2>{{nutrition_turn_heading}}</h2>
+        <p>{{nutrition_turn_text}}</p>
+        <div class="nut-turn__numbers">
+          <div class="nut-turn__num-block">
+            <strong>{{nutrition_feed_stat1_value}}</strong>
+            <span>{{nutrition_feed_stat1_label}}</span>
+          </div>
+          <div class="nut-turn__num-block">
+            <strong>{{nutrition_feed_stat2_value}}</strong>
+            <span>{{nutrition_feed_stat2_label}}</span>
+          </div>
+          <div class="nut-turn__num-block">
+            <strong>{{nutrition_feed_stat3_value}}</strong>
+            <span>{{nutrition_feed_stat3_label}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== QUOTE — Dark, intimate ====== -->
+  <section class="nut-quote nut-grain">
+    <div class="nut-quote__mark" aria-hidden="true">&ldquo;</div>
+    <div class="nut-quote__inner">
+      <div class="nut-quote__yellow-bar"></div>
+      <blockquote>
+        <p>{{nutrition_quote}}</p>
+        <cite>{{nutrition_quote_cite}}</cite>
+      </blockquote>
+    </div>
+  </section>
+
+
+  <!-- ====== CTA — Clean, warm ====== -->
+  <section class="nut-cta">
+    <div class="nut-cta__inner">
+      <h2>{{nutrition_cta_heading}}</h2>
+      <a href="donate.html" class="btn btn-secondary btn-lg">
+        {{nutrition_cta_button}}
+      </a>
+      <div class="nut-cta__trust">
+        <span>501(c)(3) tax-deductible</span>
+        <span>&middot;</span>
+        <span>100% funds programs</span>
+      </div>
+    </div>
+  </section>
+
+
+  {{footer_html}}
+
+  <script src="main.js"></script>
+  <script>
+    // Scroll-triggered animations + count-up stats
+    (function() {
+      // ---- Reveal observer ----
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('nut-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.nut-stat, .nut-turn__text, .nut-quote__inner, .nut-cta__inner').forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(32px)';
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        revealObserver.observe(el);
+      });
+
+      // Stagger the second stat
+      var stats = document.querySelectorAll('.nut-stat');
+      if (stats[1]) stats[1].style.transitionDelay = '0.15s';
+
+      var style = document.createElement('style');
+      style.textContent = '.nut-visible { opacity: 1 !important; transform: translateY(0) !important; }';
+      document.head.appendChild(style);
+
+      // ---- Count-up animation for [data-countup] elements ----
+      // Parses things like "47%", "600+", "$249k", "8 out of 10", etc.
+      // Extracts the leading numeric portion, animates from 0 to it on scroll-in,
+      // preserves the surrounding prefix/suffix (% sign, etc.)
+      function animateCountUp(el, finalText) {
+        var match = String(finalText).match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
+        if (!match) return; // no numeric portion — leave as is
+        var prefix = match[1] || '';
+        var target = parseFloat(match[2]);
+        var suffix = match[3] || '';
+        var duration = 1400;
+        var startTime = null;
+        function frame(now) {
+          if (!startTime) startTime = now;
+          var elapsed = now - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          // ease-out cubic
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          var display = (target % 1 === 0) ? Math.round(current) : current.toFixed(1);
+          el.textContent = prefix + display + suffix;
+          if (progress < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      var countObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var finalText = el.getAttribute('data-countup') || el.textContent;
+            el.textContent = '0';
+            animateCountUp(el, finalText);
+            countObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      document.querySelectorAll('[data-countup]').forEach(function(el) {
+        countObserver.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>

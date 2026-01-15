@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate — Let's Be Ready</title>
+  <meta name="description" content="100% of every dollar goes directly to programs in rural Guatemala. Support preschool education for children who need it most.">
+  <meta property="og:title" content="Donate — Let's Be Ready">
+  <meta property="og:description" content="100% goes directly to programs. Support preschool education in rural Guatemala.">
+  <meta property="og:image" content="{{og_image_url}}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="{{favicon_url}}">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="{{logo_url}}" alt="{{site_name}}" width="40" height="40">
+        {{site_name}}
+      </a>
+      <ul class="nav__links">
+        <li><a href="curriculum.html" class="nav__link">Curriculum</a></li>
+        <li><a href="nutrition.html" class="nav__link">Nutrition</a></li>
+        <li><a href="partners.html" class="nav__link">Partners</a></li>
+      </ul>
+      <a href="#donate-form" class="btn btn-primary btn-sm nav__cta">Donate</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="curriculum.html" class="mobile-menu__link">Curriculum</a></li>
+      <li><a href="nutrition.html" class="mobile-menu__link">Nutrition</a></li>
+      <li><a href="partners.html" class="mobile-menu__link">Partners</a></li>
+      <li><a href="#donate-form" class="btn btn-primary btn-lg" style="margin-top:1rem;">Donate</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ====== THE PAGE: Form + Emotional Context — Side by Side ====== -->
+  <section class="dp">
+    <div class="container">
+      <div class="dp__grid">
+
+        <!-- LEFT: Emotional context -->
+        <div class="dp__story">
+          <h1 class="dp__headline">
+            {{donate_headline}}
+          </h1>
+          <p class="dp__sub">
+            {{donate_sub}}
+          </p>
+
+          <div class="dp__photo">
+            <img
+              src="{{donate_image_url}}"
+              alt="{{donate_image_alt}}"
+              loading="eager"
+            >
+          </div>
+
+          <blockquote class="dp__quote">
+            <p>{{donate_quote}}</p>
+            <cite>{{donate_quote_cite}}</cite>
+          </blockquote>
+
+          <div class="dp__stats">
+            <div class="dp__stat">
+              <div class="dp__stat-value">{{donate_stat1_value}}</div>
+              <div class="dp__stat-label">{{donate_stat1_label}}</div>
+            </div>
+            <div class="dp__stat">
+              <div class="dp__stat-value">{{donate_stat2_value}}</div>
+              <div class="dp__stat-label">{{donate_stat2_label}}</div>
+            </div>
+            <div class="dp__stat">
+              <div class="dp__stat-value">{{donate_stat3_value}}</div>
+              <div class="dp__stat-label">{{donate_stat3_label}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: GiveLively widget + sponsor card + lifetime impact -->
+        <div class="dp__form-col">
+          <div class="donate-form" id="donate-form">
+
+            <!-- GiveLively Branded Donation Widget (HTML pasted from Studio) -->
+            <div class="givelively-host">
+              {{givelively_widget}}
+            </div>
+
+            <p class="donate-form__fee-note">
+              {{fee_note}}
+            </p>
+            <div class="donate-form__trust-line">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" stroke="var(--success)" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {{trust_pill_1}} &middot; {{trust_pill_2}} &middot; {{trust_pill_3}}
+            </div>
+          </div>
+
+          <!-- Sponsor a Classroom — full-width call-to-action under the widget -->
+          <div class="sponsor-classroom">
+            <div class="sponsor-classroom__badge">{{sponsor_badge}}</div>
+            <h4>{{sponsor_heading}}</h4>
+            <div class="sponsor-classroom__price">{{sponsor_price}}<span>/year</span></div>
+            <p>{{sponsor_description}}</p>
+            <a href="mailto:{{contact_email}}?subject=I%20want%20to%20sponsor%20a%20classroom&amp;body=Hi%2C%20I%27m%20interested%20in%20sponsoring%20a%20classroom%20for%20the%20year%20%28%243%2C800%29.%20Please%20get%20in%20touch%20about%20next%20steps.%0A%0AThanks%21" class="btn btn-primary btn-lg">{{sponsor_button_text}}</a>
+            <p class="sponsor-classroom__fallback">or email <a href="mailto:{{contact_email}}">{{contact_email}}</a></p>
+          </div>
+
+          <!-- Lifetime Impact (manually updated annually) -->
+          <div class="dp__lifetime">
+            <span class="eyebrow">{{lifetime_eyebrow}}</span>
+            <h3>{{lifetime_heading}}</h3>
+            <div class="dp__lifetime-grid">
+              <div class="dp__lifetime-stat">
+                <strong>{{lifetime_stat1_value}}</strong>
+                <span>{{lifetime_stat1_label}}</span>
+              </div>
+              <div class="dp__lifetime-stat">
+                <strong>{{lifetime_stat2_value}}</strong>
+                <span>{{lifetime_stat2_label}}</span>
+              </div>
+              <div class="dp__lifetime-stat">
+                <strong>{{lifetime_stat3_value}}</strong>
+                <span>{{lifetime_stat3_label}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== TRANSPARENCY — Where your money goes ====== -->
+  <section class="dp-transparency" id="transparency">
+    <div class="container container--narrow">
+      <h2 class="dp-transparency__title">{{donate_transparency_heading}}</h2>
+
+      <div class="dp-transparency__bars">
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>{{donate_bar1_label}}</span>
+            <strong>{{donate_bar1_amount}}</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill" style="width:55%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>{{donate_bar2_label}}</span>
+            <strong>{{donate_bar2_amount}}</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--yellow" style="width:21%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>{{donate_bar3_label}}</span>
+            <strong>{{donate_bar3_amount}}</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--green" style="width:13%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>{{donate_bar4_label}}</span>
+            <strong>{{donate_bar4_amount}}</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--gray" style="width:9%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>{{donate_bar5_label}}</span>
+            <strong>{{donate_bar5_amount}}</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--light" style="width:5.15%;"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====== OTHER WAYS ====== -->
+  <section style="padding:var(--space-3xl) 0; background:var(--warm-white);">
+    <div class="container container--narrow">
+      <div class="dp-other-ways__grid">
+        <div>
+          <h4 style="margin-bottom:var(--space-sm);">{{mail_heading}}</h4>
+          <p style="font-size:0.875rem; color:var(--text-muted);">
+            {{mail_address}}
+          </p>
+        </div>
+        <div>
+          <h4 style="margin-bottom:var(--space-sm);">{{other_platforms_heading}}</h4>
+          <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:var(--space-sm);">{{other_platforms_note}}</p>
+          <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+            <a href="{{globalgiving_url}}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GlobalGiving</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== CONTACT ====== -->
+  <section style="padding:var(--space-4xl) 0;" id="contact">
+    <div class="container container--narrow">
+      <div class="section-header text-center">
+        <span class="eyebrow">{{contact_eyebrow}}</span>
+        <h2>{{contact_heading}}</h2>
+      </div>
+      <div class="contact-cta">
+        <p class="contact-cta__text">
+          Questions about donations, partnerships, or our work in Guatemala?<br>
+          We read every message.
+        </p>
+        <a href="mailto:{{contact_email}}" class="btn btn-primary btn-lg">
+          Email us at {{contact_email}}
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  {{footer_html}}
+
+  <script src="main.js"></script>
+</body>
+</html>
