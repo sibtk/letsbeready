@@ -12,8 +12,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
@@ -254,6 +255,42 @@
             Founded in 2008. Not a pilot. Not an experiment.
             A proven, replicable model.
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE MAP — See where your donation works
+       ============================================================ -->
+  <section class="lp-map" id="impact-map">
+    <div class="container">
+      <div class="lp-map__layout reveal">
+        <div class="lp-map__text">
+          <span class="eyebrow">See the Impact</span>
+          <h2>55 classrooms.<br>5 departments.<br>One map.</h2>
+          <p>
+            Every pin is a real classroom, run by a real teacher,
+            in a real community. Click to meet them.
+          </p>
+          <div class="lp-map__stat-row">
+            <div class="lp-map__stat">
+              <strong id="mapCommunities">55</strong>
+              <span>Communities</span>
+            </div>
+            <div class="lp-map__stat">
+              <strong id="mapTeachers">55</strong>
+              <span>Teachers</span>
+            </div>
+            <div class="lp-map__stat">
+              <strong id="mapChildren">612</strong>
+              <span>Children</span>
+            </div>
+          </div>
+        </div>
+        <div class="lp-map__container">
+          <div id="classroomMap"></div>
         </div>
       </div>
     </div>
@@ -586,6 +623,8 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="main.js"></script>
+  <script src="map.js"></script>
 </body>
 </html>

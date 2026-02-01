@@ -181,7 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.3 });
 
-    progressObserver.observe(progressFill.closest('.d-tracker__card') || progressFill.closest('.tracker__card'));
+    const trackerParent = progressFill.closest('.dp__tracker') || progressFill.closest('.d-tracker__card') || progressFill.closest('.tracker__card');
+    if (trackerParent) progressObserver.observe(trackerParent);
   }
 
 });

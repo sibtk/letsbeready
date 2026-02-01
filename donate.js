@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
       const elements = stripe.elements({
         fonts: [
-          { cssSrc: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap' }
+          { cssSrc: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap' }
         ]
       });
 
