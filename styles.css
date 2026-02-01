@@ -1738,6 +1738,13 @@ section {
   color: var(--dark);
 }
 
+/* Other Ways grid (donate page) */
+.dp-other-ways__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+}
+
 /* ============================================
    LANDING PAGE — Immersive Sections
    ============================================ */
@@ -2801,6 +2808,9 @@ section {
   .lp-model__step--reverse {
     direction: ltr;
   }
+  .dp__grid {
+    grid-template-columns: 1fr 400px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2938,15 +2948,18 @@ section {
   }
 
   .lp-proof__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
   }
 
   .lp-team__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
   }
 
   .lp-allocation__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
 
   .lp-transparency__fee-row {
@@ -2973,5 +2986,605 @@ section {
   .hero__actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+
+/* ============================================
+   MOBILE ENHANCEMENTS — Touch, Animation, Polish
+   ============================================ */
+
+/* --- Lighter hero animation for mobile --- */
+@keyframes heroRevealMobile {
+  0% { transform: scale(1.08); filter: brightness(0.4); }
+  100% { transform: scale(1.02); filter: brightness(1); }
+}
+
+/* --- Simple slide-up for mobile text entrance --- */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Sticky Mobile CTA (hidden on desktop) --- */
+.mobile-sticky-cta {
+  display: none;
+}
+
+
+/* ================================================
+   MOBILE (≤768px) — The full mobile experience
+   ================================================ */
+@media (max-width: 768px) {
+
+  /* -- Foundations -- */
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  /* -- Lighter animations: remove blur for mobile GPU perf -- */
+  .reveal {
+    filter: none;
+    transform: translateY(16px);
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .reveal.visible {
+    filter: none;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    filter: none;
+    transform: translateX(-12px);
+    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .reveal-left.visible {
+    filter: none;
+    transform: translateX(0);
+  }
+
+  .stagger-children > * {
+    filter: none;
+    transform: translateY(12px);
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  }
+  .stagger-children.visible > * {
+    filter: none;
+    transform: translateY(0);
+  }
+
+  /* -- Hide decorative line breaks on mobile -- */
+  .lp-hero__sub br,
+  .lp-turn h2 br,
+  .lp-transparency__text h2 br,
+  .section-header h2 br {
+    display: none;
+  }
+
+  /* -- Navigation — compact, CTA visible -- */
+  .nav {
+    height: 64px;
+  }
+
+  .nav__inner {
+    padding: 0 1.25rem;
+  }
+
+  .nav__cta {
+    margin-left: auto;
+    margin-right: var(--space-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    min-height: 36px;
+  }
+
+  /* -- Enhanced slide-in mobile menu -- */
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(250, 250, 248, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 1;
+    transform: translateX(100%);
+    transition: transform 0.5s var(--ease-out);
+    padding: calc(64px + var(--space-3xl)) 1.25rem var(--space-xl);
+    padding-bottom: max(var(--space-xl), env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-menu.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .mobile-menu__links {
+    gap: var(--space-md);
+  }
+
+  .mobile-menu__link {
+    font-size: 1.75rem;
+    padding: var(--space-sm) 0;
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu__link:active {
+    color: var(--blue);
+  }
+
+  /* -- Buttons — 48px min touch targets -- */
+  .btn {
+    min-height: 48px;
+  }
+
+  .btn-lg {
+    min-height: 52px;
+    padding: 0.875rem 2rem;
+  }
+
+  /* -- Forms — 16px prevents iOS auto-zoom on focus -- */
+  .form-input,
+  input.form-input,
+  textarea.form-input,
+  select.form-input {
+    font-size: 16px;
+    min-height: 48px;
+  }
+
+  #card-element {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* -- Hero — cinematic but performant -- */
+  .lp-hero {
+    min-height: 100svh;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .lp-hero__media-img {
+    object-position: center 20%;
+    animation: heroRevealMobile 2.5s var(--ease-out) forwards;
+  }
+
+  .lp-hero__overlay {
+    animation: none;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.78) 0%,
+      rgba(0,0,0,0.4) 45%,
+      rgba(0,0,0,0.15) 100%
+    ) !important;
+  }
+
+  .lp-hero__content {
+    padding: 0 1.25rem;
+  }
+
+  .lp-hero__headline {
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
+    line-height: 1.08;
+    margin-bottom: var(--space-md);
+    animation: slideUp 0.8s var(--ease-out) 0.3s both;
+  }
+
+  .lp-hero__sub {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: var(--space-xl);
+    max-width: none;
+    animation: slideUp 0.8s var(--ease-out) 0.6s both;
+  }
+
+  .lp-hero__actions {
+    animation: slideUp 0.8s var(--ease-out) 0.9s both;
+  }
+
+  .lp-hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+  }
+
+  /* -- Disparity — full-width bars -- */
+  .lp-disparity__headline {
+    font-size: clamp(1.5rem, 5.5vw, 2.25rem);
+  }
+
+  .lp-disparity__stat-text {
+    font-size: 0.9375rem;
+  }
+
+  /* -- Turn — punchy -- */
+  .lp-turn {
+    padding: var(--space-3xl) 0;
+  }
+
+  .lp-turn__word {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    margin-bottom: var(--space-md);
+  }
+
+  /* -- Model — tighter step numbers -- */
+  .lp-model__step-number {
+    font-size: 4rem;
+    top: -0.5rem;
+    left: -0.25rem;
+  }
+
+  .lp-model__step-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .lp-model__step-content p {
+    font-size: 0.9375rem;
+  }
+
+  /* -- Proof — compact 2-col cards -- */
+  .lp-proof {
+    padding: var(--space-3xl) 0;
+  }
+
+  .lp-proof__card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .lp-proof__number {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .lp-proof__label {
+    font-size: 0.8125rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .lp-proof__context {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* -- Map — centered text, full-width map -- */
+  .lp-map__text {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .lp-map__text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lp-map__stat-row {
+    justify-content: center;
+  }
+
+  #classroomMap {
+    height: 380px;
+  }
+
+  .lp-map__popup {
+    width: 220px;
+  }
+
+  .lp-map__popup-cta {
+    padding: var(--space-md);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* -- Cost — full-width CTA -- */
+  .lp-cost .btn-lg {
+    width: 100%;
+  }
+
+  .lp-cost__context {
+    font-size: 0.9375rem;
+  }
+
+  /* -- Allocation — horizontal card layout -- */
+  .lp-allocation__item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 2px var(--space-md);
+    padding: var(--space-lg);
+  }
+
+  .lp-allocation__icon {
+    grid-row: 1 / 3;
+    margin-bottom: 0;
+    width: 48px;
+    height: 48px;
+    align-self: start;
+  }
+
+  .lp-allocation__item h4 {
+    align-self: end;
+  }
+
+  .lp-allocation__item p {
+    align-self: start;
+  }
+
+  /* -- Transparency -- */
+  .lp-transparency__card-header {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  /* -- Team — compact cards -- */
+  .lp-team__card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .lp-team__photo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .lp-team__card p {
+    font-size: 0.8125rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* -- Quote — tighter -- */
+  .lp-quote {
+    padding: var(--space-2xl) 0;
+  }
+
+  .lp-quote__block p {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  /* -- Final CTA — extra padding for sticky bar -- */
+  .lp-final-cta {
+    padding: var(--space-3xl) 0;
+    padding-bottom: calc(var(--space-3xl) + 80px);
+  }
+
+  .lp-final-cta p {
+    font-size: 1rem;
+  }
+
+  .lp-final-cta .btn {
+    width: 100%;
+  }
+
+  .lp-final-cta__trust {
+    gap: var(--space-sm);
+    font-size: 0.75rem;
+  }
+
+  /* -- Footer — extra padding for sticky bar -- */
+  .footer {
+    padding-bottom: calc(var(--space-2xl) + 80px);
+  }
+
+  .footer__brand {
+    text-align: center;
+  }
+
+  .footer__brand p {
+    max-width: none;
+    margin: var(--space-md) auto 0;
+  }
+
+  .footer__social {
+    justify-content: center;
+  }
+
+  .footer__newsletter-form {
+    flex-direction: column;
+  }
+
+  .footer__newsletter-form button {
+    width: 100%;
+    padding: 0.875rem;
+    min-height: 48px;
+  }
+
+  /* -- Sticky Mobile CTA Bar -- */
+  .mobile-sticky-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    padding: 12px 1.25rem;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .mobile-sticky-cta.visible {
+    transform: translateY(0);
+  }
+
+  .mobile-sticky-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* -- Donate Page — form first on mobile -- */
+  .dp {
+    padding: calc(64px + var(--space-lg)) 0 var(--space-2xl);
+  }
+
+  .dp__form-col {
+    position: static;
+    order: -1;
+  }
+
+  .dp__headline {
+    font-size: clamp(1.75rem, 7vw, 2.75rem);
+  }
+
+  .dp__stats {
+    flex-wrap: wrap;
+  }
+
+  .dp__photo {
+    margin-bottom: var(--space-lg);
+  }
+
+  .donate-form {
+    padding: var(--space-lg);
+  }
+
+  .dp-other-ways__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ================================================
+   SMALL PHONES (≤480px) — Extra compact
+   ================================================ */
+@media (max-width: 480px) {
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .lp-hero__headline {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  /* Proof — single column on small phones */
+  .lp-proof__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-proof__card {
+    padding: var(--space-lg);
+  }
+
+  .lp-proof__number {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .lp-proof__label {
+    font-size: 0.9375rem;
+  }
+
+  .lp-proof__context {
+    font-size: 0.8125rem;
+    display: block;
+  }
+
+  /* Team — horizontal people list on small phones */
+  .lp-team__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-team__card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0 var(--space-md);
+    text-align: left;
+    padding: var(--space-lg);
+  }
+
+  .lp-team__photo {
+    grid-row: 1 / 4;
+    width: 64px;
+    height: 64px;
+    margin: 0;
+    align-self: center;
+  }
+
+  .lp-team__name {
+    align-self: end;
+    margin-bottom: 0;
+  }
+
+  .lp-team__role {
+    margin-bottom: 2px;
+  }
+
+  .lp-team__card p {
+    -webkit-line-clamp: 2;
+  }
+
+  /* Map — shorter on small phones */
+  #classroomMap {
+    height: 300px;
+  }
+
+  .lp-map__stat-row {
+    gap: var(--space-md);
+  }
+
+  /* Nav — hide CTA on tiny screens (sticky bar covers it) */
+  .nav__cta {
+    display: none;
+  }
+
+  .mobile-sticky-cta {
+    padding: 10px 1rem;
+  }
+
+  .lp-allocation__item {
+    padding: var(--space-md);
+  }
+}
+
+
+/* ================================================
+   ACCESSIBILITY — Reduced motion preference
+   ================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lp-hero__media-img {
+    animation: none !important;
+    transform: scale(1.05);
+    filter: brightness(1) saturate(1);
+  }
+
+  .lp-hero__overlay {
+    animation: none !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 }

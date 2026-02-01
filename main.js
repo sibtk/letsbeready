@@ -146,6 +146,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- Sticky Mobile CTA ---
+  const mobileCta = document.getElementById('mobileCta');
+  if (mobileCta) {
+    let ctaTicking = false;
+    const showAfter = window.innerHeight * 0.5;
+
+    function checkStickyCta() {
+      if (window.scrollY > showAfter) {
+        mobileCta.classList.add('visible');
+      } else {
+        mobileCta.classList.remove('visible');
+      }
+      ctaTicking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ctaTicking) {
+        requestAnimationFrame(checkStickyCta);
+        ctaTicking = true;
+      }
+    }, { passive: true });
+  }
+
   // --- Newsletter Form ---
   const newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {
