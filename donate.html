@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate — Let's Be Ready</title>
+  <meta name="description" content="$300 educates one child for a year. 97.8% of every dollar goes directly to programs in rural Guatemala.">
+  <meta property="og:title" content="Donate — Let's Be Ready">
+  <meta property="og:description" content="$300 educates one child for a year. 97.8% goes directly to programs.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://js.stripe.com/v3/"></script>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="https://static.wixstatic.com/media/b86cca_fad6ad16645e42dca07079533d335af6~mv2.png/v1/fill/w_80,h_80,al_c,q_85/cropped-cropped-logo-1-e1497444809475.png" alt="Let's Be Ready" width="40" height="40">
+        Let's Be Ready
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#story" class="nav__link">Our Story</a></li>
+        <li><a href="index.html#proof" class="nav__link">Results</a></li>
+        <li><a href="#transparency" class="nav__link">Transparency</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+      <a href="#donate-form" class="btn btn-primary btn-sm nav__cta">Donate</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="index.html#story" class="mobile-menu__link">Our Story</a></li>
+      <li><a href="index.html#proof" class="mobile-menu__link">Results</a></li>
+      <li><a href="#transparency" class="mobile-menu__link">Transparency</a></li>
+      <li><a href="#donate-form" class="btn btn-primary btn-lg" style="margin-top:1rem;">Donate</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ====== THE PAGE: Form + Emotional Context — Side by Side ====== -->
+  <section class="dp">
+    <div class="container">
+      <div class="dp__grid">
+
+        <!-- LEFT: Emotional context -->
+        <div class="dp__story">
+          <h1 class="dp__headline">
+            She's never held<br>a <em>pencil.</em>
+          </h1>
+          <p class="dp__sub">
+            In rural Guatemala, 4 out of 5 children never see a preschool. Not because
+            they can't learn &mdash; because there isn't one. <strong>$300 changes that for an entire year.</strong>
+          </p>
+
+          <div class="dp__photo">
+            <img
+              src="https://static.wixstatic.com/media/b86cca_b489ead10c7b4188988ce83da95fd643~mv2.jpg/v1/fill/w_600,h_450,al_c,q_80/WhatsApp-Image-2024-05-09-at-11.59.33-AM.jpg"
+              alt="Children in a classroom in rural Guatemala"
+              loading="eager"
+            >
+          </div>
+
+          <blockquote class="dp__quote">
+            <p>&ldquo;Before Aula Magica, my daughter had never held a crayon. Now she reads to her little brother every night.&rdquo;</p>
+            <cite>&mdash; Mother in Patzit&eacute;, Guatemala</cite>
+          </blockquote>
+
+          <div class="dp__stats">
+            <div class="dp__stat">
+              <div class="dp__stat-value">600+</div>
+              <div class="dp__stat-label">Children educated</div>
+            </div>
+            <div class="dp__stat">
+              <div class="dp__stat-value">95%</div>
+              <div class="dp__stat-label">Pass first grade</div>
+            </div>
+            <div class="dp__stat">
+              <div class="dp__stat-value">97.8%</div>
+              <div class="dp__stat-label">Goes to programs</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: The Form — sticky, always visible -->
+        <div class="dp__form-col">
+          <div class="donate-form" id="donate-form">
+
+            <!-- Frequency -->
+            <div class="donate-form__frequency">
+              <button class="frequency-btn active" data-frequency="one-time">One-time</button>
+              <button class="frequency-btn" data-frequency="monthly">Monthly</button>
+            </div>
+
+            <!-- Amounts -->
+            <div class="donate-form__amounts">
+              <button class="amount-btn" data-amount="25">
+                <span class="amount-btn__price">$25</span>
+                <span class="amount-btn__impact">Snacks, 1 child/mo</span>
+              </button>
+              <button class="amount-btn" data-amount="50">
+                <span class="amount-btn__price">$50</span>
+                <span class="amount-btn__impact">Classroom supplies</span>
+              </button>
+              <button class="amount-btn active" data-amount="100">
+                <span class="amount-btn__price">$100</span>
+                <span class="amount-btn__impact">3 kids for a month</span>
+              </button>
+              <button class="amount-btn" data-amount="300">
+                <span class="amount-btn__price">$300</span>
+                <span class="amount-btn__impact">1 child, full year</span>
+              </button>
+            </div>
+
+            <div style="text-align:center; margin-bottom:var(--space-md);">
+              <button class="amount-btn amount-btn--custom" data-amount="custom" style="width:100%; border-style:dashed;">Custom amount</button>
+            </div>
+
+            <div class="donate-form__custom-input" id="customAmountWrap">
+              <div class="form-group">
+                <label class="form-label" for="customAmount">Amount ($)</label>
+                <input type="number" id="customAmount" class="form-input" placeholder="Enter amount" min="1">
+              </div>
+            </div>
+
+            <!-- Impact -->
+            <div class="donate-form__impact" id="impactMessage">
+              <strong>$100</strong> provides materials for <strong>3 children</strong> for a month
+            </div>
+
+            <!-- Name + Email -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-input" placeholder="First name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-input" placeholder="Last name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+
+            <!-- Card -->
+            <div class="form-group">
+              <label class="form-label">Card Details</label>
+              <div id="card-element"></div>
+              <div id="card-errors" style="color:#e53e3e; font-size:0.8125rem; margin-top:var(--space-sm);"></div>
+            </div>
+
+            <!-- Cover Fees -->
+            <label class="dp__cover-fees">
+              <input type="checkbox" id="coverFees">
+              Cover the 2.2% fee so 100% goes to children
+            </label>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-lg donate-form__submit" id="submitBtn">
+              <span id="submitText">Donate $100</span>
+              <svg id="submitSpinner" width="20" height="20" viewBox="0 0 20 20" fill="none" style="display:none; animation:spin 1s linear infinite;">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" stroke-dasharray="40" stroke-dashoffset="10" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <p class="donate-form__fee-note">
+              Secure &middot; Stripe &middot; 2.2% fee &middot; Tax-deductible 501(c)(3)
+            </p>
+          </div>
+
+          <!-- Campaign Progress — compact, under the form -->
+          <div class="dp__tracker">
+            <div class="dp__tracker-top">
+              <span><strong>$<span id="totalRaised">47,250</span></strong> of $75,000</span>
+              <span class="dp__tracker-donors"><span id="donorCount">142</span> donors</span>
+            </div>
+            <div class="dp__tracker-bar">
+              <div class="dp__tracker-fill" id="progressFill" style="width:0%;"></div>
+            </div>
+          </div>
+
+          <!-- Recent Donations — compact -->
+          <div class="dp__recent">
+            <div class="dp__recent-header">
+              <span class="dp__recent-dot"></span> Recent donations
+            </div>
+            <div id="donationFeed">
+              <div class="donation-item">
+                <div class="donation-item__avatar">MJ</div>
+                <div class="donation-item__info">
+                  <div class="donation-item__name">Maria J.</div>
+                  <div class="donation-item__time">2 hrs ago</div>
+                </div>
+                <div class="donation-item__amount">$300</div>
+              </div>
+              <div class="donation-item">
+                <div class="donation-item__avatar">TS</div>
+                <div class="donation-item__info">
+                  <div class="donation-item__name">Thomas S.</div>
+                  <div class="donation-item__time">5 hrs ago</div>
+                </div>
+                <div class="donation-item__amount">$100</div>
+              </div>
+              <div class="donation-item">
+                <div class="donation-item__avatar">RB</div>
+                <div class="donation-item__info">
+                  <div class="donation-item__name">Rachel B.</div>
+                  <div class="donation-item__time">1 day ago</div>
+                </div>
+                <div class="donation-item__amount">$500</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== TRANSPARENCY — Where your money goes ====== -->
+  <section class="dp-transparency" id="transparency">
+    <div class="container container--narrow">
+      <h2 class="dp-transparency__title">Where your $300 goes</h2>
+
+      <div class="dp-transparency__bars">
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>Teacher salaries &amp; training</span>
+            <strong>$165</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill" style="width:55%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>Learning materials</span>
+            <strong>$63</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--yellow" style="width:21%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>Meals for students</span>
+            <strong>$39</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--green" style="width:13%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>Facilities</span>
+            <strong>$26</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--gray" style="width:9%;"></div></div>
+        </div>
+        <div class="dp-bar">
+          <div class="dp-bar__top">
+            <span>Stripe fee <em>(only overhead)</em></span>
+            <strong>$6.60</strong>
+          </div>
+          <div class="dp-bar__track"><div class="dp-bar__fill dp-bar__fill--light" style="width:2.2%;"></div></div>
+        </div>
+      </div>
+
+      <div class="dp-fees">
+        <div class="dp-fees__row dp-fees__row--us">
+          <span>Stripe (us)</span><span>2.2%</span><span>$97.80 to children</span>
+        </div>
+        <div class="dp-fees__row">
+          <span>DonorSee</span><span>2.9%</span><span>$97.10</span>
+        </div>
+        <div class="dp-fees__row">
+          <span>PayPal</span><span>3.2%</span><span>$96.80</span>
+        </div>
+        <div class="dp-fees__row dp-fees__row--bad">
+          <span>GlobalGiving</span><span>15%</span><span>$85.00</span>
+        </div>
+      </div>
+      <p class="dp-fees__note">
+        Switching to Stripe saves <strong>$6,400/year</strong> on $50k in donations.
+        That's <strong>21 more children</strong> in school.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ====== OTHER WAYS ====== -->
+  <section style="padding:var(--space-3xl) 0; background:var(--warm-white);">
+    <div class="container container--narrow">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-2xl);">
+        <div>
+          <h4 style="margin-bottom:var(--space-sm);">Mail a check</h4>
+          <p style="font-size:0.875rem; color:var(--text-muted);">
+            Let's Be Ready #3259-6581<br>
+            Charles Schwab &amp; Co Inc<br>
+            PO Box 982600, El Paso, TX 79998
+          </p>
+        </div>
+        <div>
+          <h4 style="margin-bottom:var(--space-sm);">Other platforms</h4>
+          <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:var(--space-sm);">Higher fees apply:</p>
+          <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+            <a href="https://www.globalgiving.org/donate/9002/lets-be-ready/" target="_blank" class="btn btn-outline btn-sm">GlobalGiving</a>
+            <a href="https://donorsee.com/letsbeready" target="_blank" class="btn btn-outline btn-sm">DonorSee</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== CONTACT ====== -->
+  <section style="padding:var(--space-4xl) 0;" id="contact">
+    <div class="container container--narrow">
+      <div class="section-header text-center">
+        <span class="eyebrow">Questions?</span>
+        <h2>Get in touch</h2>
+      </div>
+      <div class="donate-form" style="max-width:600px; margin:0 auto;">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contactFirst">First Name</label>
+              <input type="text" id="contactFirst" class="form-input" placeholder="First name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactLast">Last Name</label>
+              <input type="text" id="contactLast" class="form-input" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" class="form-input" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message</label>
+            <textarea id="contactMessage" class="form-input" rows="4" placeholder="How can we help?" required style="resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo" style="color:var(--white); margin-bottom:var(--space-md); display:inline-flex;">Let's Be Ready</a>
+          <p>A 501(c)(3) nonprofit transforming preschool education in rural Guatemala since 2008.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/LetsbereadyGT" target="_blank" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/letsbereadygt/" target="_blank" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/@letsbeready2024" target="_blank" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Organization</div>
+          <ul class="footer__links">
+            <li><a href="index.html#story">Our Story</a></li>
+            <li><a href="index.html#proof">Results</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Support</div>
+          <ul class="footer__links">
+            <li><a href="#donate-form">Donate</a></li>
+            <li><a href="mailto:contact@letsbeready.org">Contact Us</a></li>
+            <li><a href="https://www.globalgiving.org/donate/9002/lets-be-ready/" target="_blank">GlobalGiving</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Stay Updated</div>
+          <form class="footer__newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Your email" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+          <div style="margin-top:var(--space-xl);">
+            <div class="footer__heading">Address</div>
+            <p style="font-size:0.875rem;">1014 Pauline Avenue<br>Bellaire, Texas 77401</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 Let's Be Ready. 501(c)(3) Nonprofit.</span>
+        <span>All donations are tax-deductible.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="donate.js"></script>
+</body>
+</html>
