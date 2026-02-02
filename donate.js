@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedFrequency = 'one-time';
   let coverFees = false;
 
+  // --- URL Parameter: Pre-select amount from ?amount=X ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const presetAmount = parseInt(urlParams.get('amount'), 10);
+  if (presetAmount > 0) {
+    selectedAmount = presetAmount;
+  }
+
   // --- DOM Elements ---
   const amountBtns = document.querySelectorAll('.amount-btn');
   const frequencyBtns = document.querySelectorAll('.frequency-btn');
@@ -242,27 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showSuccess(name, amount) {
-    const form = document.getElementById('donate-form');
-    if (!form) return;
-
-    form.innerHTML = `
-      <div style="text-align: center; padding: var(--space-2xl) 0;">
-        <div style="font-size: 4rem; margin-bottom: var(--space-lg);">&#x1F389;</div>
-        <h2 style="margin-bottom: var(--space-md);">Thank you, ${name || 'friend'}!</h2>
-        <p style="color: var(--text-muted); font-size: 1.125rem; margin-bottom: var(--space-lg);">
-          Your donation of <strong>$${(amount || 0).toLocaleString()}</strong> is making a real difference
-          for children in rural Guatemala.
-        </p>
-        <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-xl);">
-          A receipt has been sent to your email. Your donation is tax-deductible under our 501(c)(3) status.
-        </p>
-        <a href="index.html" class="btn btn-primary">Back to Home</a>
-      </div>
-    `;
-
-    // Update tracker (demo)
-    addDonationToFeed(name, amount);
-    updateTrackerAmount(amount);
+    const params = new URLSearchParams({
+      name: name || 'Friend',
+      amount: amount || 0,
+      frequency: selectedFrequency
+    });
+    window.location.href = `thank-you.html?${params.toString()}`;
   }
 
   // --- Live Donation Feed ---
@@ -326,6 +318,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Initialize ---
+
+  // Pre-select amount button from URL parameter
+  if (presetAmount > 0) {
+    let matched = false;
+    amountBtns.forEach(btn => {
+      btn.classList.remove('active');
+      if (parseInt(btn.dataset.amount, 10) === presetAmount) {
+        btn.classList.add('active');
+        matched = true;
+      }
+    });
+    if (!matched) {
+      // Show custom amount input with the preset value
+      const customBtn = document.querySelector('[data-amount="custom"]');
+      if (customBtn) {
+        amountBtns.forEach(b => b.classList.remove('active'));
+        customBtn.classList.add('active');
+        customAmountWrap.classList.add('visible');
+        if (customAmountInput) customAmountInput.value = presetAmount;
+      }
+    }
+  }
+
   updateImpact();
   updateSubmitButton();
 

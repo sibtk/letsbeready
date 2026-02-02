@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Let's Be Ready</title>
+  <meta name="description" content="Thank you for your donation. 100% of your gift goes directly to educating children in rural Guatemala.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="https://static.wixstatic.com/media/b86cca_fad6ad16645e42dca07079533d335af6~mv2.png/v1/fill/w_80,h_80,al_c,q_85/cropped-cropped-logo-1-e1497444809475.png" alt="Let's Be Ready" width="40" height="40">
+        Let's Be Ready
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#story" class="nav__link">Our Story</a></li>
+        <li><a href="index.html#proof" class="nav__link">Results</a></li>
+        <li><a href="index.html#transparency" class="nav__link">Transparency</a></li>
+        <li><a href="index.html#team" class="nav__link">Team</a></li>
+      </ul>
+      <a href="donate.html" class="btn btn-primary btn-sm nav__cta">Give Again</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="index.html#story" class="mobile-menu__link">Our Story</a></li>
+      <li><a href="index.html#proof" class="mobile-menu__link">Results</a></li>
+      <li><a href="index.html#transparency" class="mobile-menu__link">Transparency</a></li>
+      <li><a href="donate.html" class="btn btn-primary btn-lg" style="margin-top:1rem;">Give Again</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ====== THANK YOU HERO ====== -->
+  <section class="ty">
+    <div class="container container--narrow">
+      <div class="ty__content">
+
+        <!-- Animated checkmark -->
+        <div class="ty__check">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="30" stroke="var(--success)" stroke-width="3" fill="var(--success-light)"/>
+            <path class="ty__check-path" d="M20 33l8 8 16-18" stroke="var(--success)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+
+        <h1 class="ty__headline">Thank you, <span id="tyName">Friend</span>!</h1>
+
+        <div class="ty__impact">
+          <div class="ty__impact-amount">$<span id="tyAmount" data-count="0">0</span></div>
+          <div class="ty__impact-label" id="tyImpact">Your donation is making a real difference.</div>
+        </div>
+
+        <!-- What happens next timeline -->
+        <div class="ty__timeline">
+          <h3>What happens next</h3>
+          <div class="ty__timeline-steps">
+            <div class="ty__step">
+              <div class="ty__step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="ty__step-text">
+                <strong>Funds transfer</strong>
+                <span>Your donation moves securely to our Guatemala operations account.</span>
+              </div>
+            </div>
+            <div class="ty__step">
+              <div class="ty__step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--blue)" stroke-width="2"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="ty__step-text">
+                <strong>Teacher receives support</strong>
+                <span>Stipends, materials, and training reach community facilitators.</span>
+              </div>
+            </div>
+            <div class="ty__step">
+              <div class="ty__step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 6.042A8.967 8.967 0 016 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="ty__step-text">
+                <strong>A child begins learning</strong>
+                <span>Education, nutrition, and a brighter future start in a village classroom.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Share buttons -->
+        <div class="ty__share">
+          <h4>Spread the word</h4>
+          <div class="ty__share-buttons">
+            <a id="shareTwitter" href="#" target="_blank" class="ty__share-btn ty__share-btn--twitter" aria-label="Share on X/Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Share
+            </a>
+            <a id="shareFacebook" href="#" target="_blank" class="ty__share-btn ty__share-btn--facebook" aria-label="Share on Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Share
+            </a>
+            <a id="shareEmail" href="#" class="ty__share-btn ty__share-btn--email" aria-label="Share via Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+
+        <!-- Secondary CTA -->
+        <div class="ty__cta" id="tyCta">
+          <a href="donate.html?amount=25" class="btn btn-primary btn-lg" id="tyCtaBtn">Become a Monthly Supporter</a>
+          <p class="ty__cta-note">Even $25/month provides daily nutrition for a child.</p>
+        </div>
+
+        <!-- Trust line -->
+        <div class="ty__trust">
+          Your receipt has been sent. Tax-deductible under 501(c)(3). EIN available upon request.
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo" style="color:var(--white); margin-bottom:var(--space-md); display:inline-flex;">Let's Be Ready</a>
+          <p>A 501(c)(3) nonprofit transforming preschool education in rural Guatemala since 2008.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/LetsbereadyGT" target="_blank" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/letsbereadygt/" target="_blank" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/@letsbeready2024" target="_blank" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Organization</div>
+          <ul class="footer__links">
+            <li><a href="index.html#story">Our Story</a></li>
+            <li><a href="index.html#proof">Results</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Support</div>
+          <ul class="footer__links">
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="mailto:contact@letsbeready.org">Contact Us</a></li>
+            <li><a href="https://www.globalgiving.org/donate/9002/lets-be-ready/" target="_blank">GlobalGiving</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Stay Updated</div>
+          <form class="footer__newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Your email" required aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+          <div style="margin-top:var(--space-xl);">
+            <div class="footer__heading">Address</div>
+            <p style="font-size:0.875rem;">1014 Pauline Avenue<br>Bellaire, Texas 77401</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__trust-pills">
+        <span class="footer__pill">Verified 501(c)(3)</span>
+        <span class="footer__pill">100% to Programs</span>
+        <span class="footer__pill">Since 2008</span>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2025 Let's Be Ready. 501(c)(3) Nonprofit.</span>
+        <span>All donations are tax-deductible.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Read URL parameters ---
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name') || 'Friend';
+      const amount = parseInt(params.get('amount'), 10) || 0;
+      const frequency = params.get('frequency') || 'one-time';
+
+      // --- Populate name ---
+      const nameEl = document.getElementById('tyName');
+      if (nameEl) nameEl.textContent = name;
+
+      // --- Animate amount counter ---
+      const amountEl = document.getElementById('tyAmount');
+      if (amountEl && amount > 0) {
+        amountEl.dataset.count = amount;
+        animateCounter(amountEl, amount);
+      }
+
+      // --- Impact message ---
+      const impactEl = document.getElementById('tyImpact');
+      if (impactEl && amount > 0) {
+        const freqLabel = frequency === 'monthly' ? ' every month' : '';
+        if (amount >= 3800) {
+          const classrooms = Math.floor(amount / 3800);
+          impactEl.textContent = `Your gift funds ${classrooms} full classroom${classrooms > 1 ? 's' : ''} for an entire year${freqLabel}.`;
+        } else if (amount >= 300) {
+          const children = Math.floor(amount / 300);
+          impactEl.textContent = `Your gift educates ${children} child${children > 1 ? 'ren' : ''} for a full year${freqLabel}.`;
+        } else if (amount >= 100) {
+          const children = Math.floor(amount / 33);
+          impactEl.textContent = `Your gift provides materials for ${children} children for a month${freqLabel}.`;
+        } else if (amount >= 50) {
+          impactEl.textContent = `Your gift supplies learning materials for 1 classroom${freqLabel}.`;
+        } else if (amount >= 25) {
+          impactEl.textContent = `Your gift provides daily nutritional snacks for 1 child for a month${freqLabel}.`;
+        } else {
+          impactEl.textContent = `Your gift helps provide essential supplies for students${freqLabel}.`;
+        }
+      }
+
+      // --- Share buttons ---
+      const shareText = `I just donated to Let's Be Ready to help educate children in rural Guatemala. $300 educates a child for a full year. Join me:`;
+      const shareUrl = 'https://www.letsbeready.org/donate.html';
+
+      const twitterBtn = document.getElementById('shareTwitter');
+      if (twitterBtn) {
+        twitterBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+      }
+
+      const facebookBtn = document.getElementById('shareFacebook');
+      if (facebookBtn) {
+        facebookBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+      }
+
+      const emailBtn = document.getElementById('shareEmail');
+      if (emailBtn) {
+        emailBtn.href = `mailto:?subject=${encodeURIComponent("Help educate children in Guatemala")}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}`;
+      }
+
+      // --- Secondary CTA: if one-time, suggest monthly ---
+      const ctaBtn = document.getElementById('tyCtaBtn');
+      if (ctaBtn && frequency === 'monthly') {
+        ctaBtn.textContent = 'Share With a Friend';
+        ctaBtn.href = `mailto:?subject=${encodeURIComponent("Help educate children in Guatemala")}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}`;
+        const ctaNote = document.querySelector('.ty__cta-note');
+        if (ctaNote) ctaNote.textContent = 'Know someone who cares about education? Pass it on.';
+      }
+
+      // --- Counter animation (reuses pattern from main.js) ---
+      function animateCounter(el, target) {
+        const duration = 1500;
+        const startTime = performance.now();
+
+        function easeOutExpo(t) {
+          return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        }
+
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = easeOutExpo(progress);
+          const current = Math.round(easedProgress * target);
+          el.textContent = current.toLocaleString();
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = target.toLocaleString();
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
+    });
+  </script>
+</body>
+</html>
