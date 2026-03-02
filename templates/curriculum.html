@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education+ Curriculum — Let's Be Ready</title>
+  <meta name="description" content="Beyond reading and writing. Our preschool curriculum includes gardening, nutritional education, art, and social-emotional learning — building the whole child.">
+  <meta property="og:title" content="Education+ Curriculum — Let's Be Ready">
+  <meta property="og:description" content="Gardening, nutrition, art, and social-emotional learning — the extension activities that build the whole child.">
+  <meta property="og:image" content="{{og_image_url}}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="{{favicon_url}}">
+
+  <style>
+    /* ========================================
+       CURRICULUM PAGE — Editorial, green-accented
+       ======================================== */
+
+    /* Grain texture overlay for dark sections */
+    .cur-grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes cur-rise {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cur-fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes cur-widen {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .cur-animate {
+      opacity: 0;
+      animation: cur-rise 0.9s var(--ease-out) forwards;
+    }
+    .cur-animate--d1 { animation-delay: 0.1s; }
+    .cur-animate--d2 { animation-delay: 0.25s; }
+    .cur-animate--d3 { animation-delay: 0.4s; }
+
+    /* ---- HERO ---- */
+    .cur-hero {
+      position: relative;
+      height: 90vh;
+      min-height: 560px;
+      max-height: 920px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .cur-hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      transform: scale(1.03);
+      animation: cur-fade 1.2s ease forwards;
+    }
+
+    .cur-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--dark) 0%,
+        rgba(30, 23, 60, 0.85) 25%,
+        rgba(30, 23, 60, 0.4) 55%,
+        rgba(30, 23, 60, 0.1) 100%
+      );
+    }
+
+    .cur-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 0 var(--space-xl) var(--space-4xl);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .cur-hero__eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--success);
+      margin-bottom: var(--space-lg);
+    }
+
+    .cur-hero__content h1 {
+      color: var(--white);
+      font-size: clamp(3rem, 7.5vw, 5.75rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      max-width: 760px;
+    }
+
+    .cur-hero__content h1 em {
+      font-style: normal;
+      color: var(--success);
+    }
+
+    .cur-hero__content p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      margin-top: var(--space-xl);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .cur-hero__bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--success);
+      z-index: 3;
+      transform-origin: left;
+      animation: cur-widen 1s 0.6s var(--ease-out) forwards;
+      transform: scaleX(0);
+    }
+
+
+    /* ---- INTRO — Editorial lead-in ---- */
+    .cur-intro {
+      padding: var(--space-5xl) var(--space-xl);
+      background: var(--warm-white);
+    }
+
+    .cur-intro__inner {
+      max-width: var(--max-width-narrow);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cur-intro__lead {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+      color: var(--dark);
+    }
+
+    .cur-intro__lead em {
+      font-style: normal;
+      position: relative;
+      display: inline;
+    }
+    .cur-intro__lead em::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: 2px;
+      height: 0.35em;
+      background: var(--success);
+      opacity: 0.25;
+      z-index: -1;
+      border-radius: 2px;
+    }
+
+    .cur-intro__sub {
+      margin-top: var(--space-2xl);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /* ---- PILLARS — Vertical numbered timeline (distinct from nutrition) ---- */
+    .cur-pillars {
+      padding: var(--space-4xl) var(--space-xl) var(--space-5xl);
+      background: var(--white);
+    }
+
+    .cur-pillars__inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Vertical line connecting all pillars */
+    .cur-pillars__inner::before {
+      content: '';
+      position: absolute;
+      left: 31px;
+      top: 32px;
+      bottom: 32px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--success-light), var(--success), var(--success-light));
+    }
+
+    .cur-pillar {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: var(--space-xl);
+      padding: var(--space-xl) 0;
+      align-items: start;
+    }
+
+    .cur-pillar__number {
+      position: relative;
+      z-index: 2;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--success);
+      letter-spacing: -0.02em;
+      box-shadow: 0 0 0 8px var(--white);
+    }
+
+    .cur-pillar__body {
+      padding-top: var(--space-md);
+    }
+
+    .cur-pillar h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.02em;
+    }
+
+    .cur-pillar p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+
+    /* ---- FEATURE BLOCKS — Photo + text alternating ---- */
+    .cur-feature {
+      padding: var(--space-5xl) 0;
+      background: var(--warm-white);
+    }
+
+    .cur-feature--alt {
+      background: var(--white);
+    }
+
+    .cur-feature__grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4xl);
+      align-items: center;
+      padding: 0 var(--space-xl);
+    }
+
+    .cur-feature__grid--reverse {
+      direction: rtl;
+    }
+    .cur-feature__grid--reverse > * {
+      direction: ltr;
+    }
+
+    .cur-feature__media {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cur-feature__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cur-feature__text .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--success);
+      margin-bottom: var(--space-md);
+    }
+
+    .cur-feature__text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--dark);
+    }
+
+    .cur-feature__text p {
+      margin-top: var(--space-xl);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 460px;
+    }
+
+    .cur-feature__list {
+      margin-top: var(--space-xl);
+      list-style: none;
+      padding: 0;
+    }
+
+    .cur-feature__list li {
+      position: relative;
+      padding-left: var(--space-xl);
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .cur-feature__list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+
+    /* ---- SUPPLEMENT HIGHLIGHT — The hero callout ---- */
+    .cur-supplement {
+      padding: var(--space-5xl) var(--space-xl);
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cur-supplement__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cur-supplement__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 0.5rem 1rem;
+      background: rgba(255, 229, 0, 0.12);
+      border: 1px solid rgba(255, 229, 0, 0.3);
+      border-radius: var(--radius-full);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xl);
+    }
+
+    .cur-supplement__badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 12px var(--yellow);
+    }
+
+    .cur-supplement__head {
+      max-width: 720px;
+      margin: 0 auto var(--space-4xl);
+      text-align: center;
+    }
+
+    .cur-supplement h2 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--white);
+    }
+
+    .cur-supplement h2 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+
+    .cur-supplement__text {
+      margin-top: var(--space-xl);
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.75;
+    }
+
+    /* Horizontal infographic strip with circular medallions */
+    .cur-supplement__strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2xl);
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cur-supplement__stat {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cur-supplement__medallion {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .cur-supplement__medallion svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .cur-supplement__medallion svg circle {
+      fill: none;
+      stroke-width: 6;
+    }
+
+    .cur-supplement__medallion svg circle.track {
+      stroke: rgba(255, 255, 255, 0.08);
+    }
+
+    .cur-supplement__medallion svg circle.fill {
+      stroke: var(--yellow);
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 0;
+      filter: drop-shadow(0 0 6px rgba(255, 229, 0, 0.4));
+    }
+
+    .cur-supplement__stat strong {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .cur-supplement__stat span {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.5;
+      max-width: 220px;
+    }
+
+    .cur-supplement__note {
+      margin-top: var(--space-2xl);
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+      font-style: italic;
+    }
+
+
+    /* ---- CTA ---- */
+    .cur-cta {
+      padding: var(--space-5xl) var(--space-xl);
+      text-align: center;
+      background: var(--warm-white);
+    }
+
+    .cur-cta__inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cur-cta h2 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--dark);
+    }
+
+    .cur-cta h2 em {
+      font-style: normal;
+      color: var(--success);
+    }
+
+    .cur-cta p {
+      margin-top: var(--space-xl);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .cur-cta .btn {
+      margin-top: var(--space-2xl);
+      padding: 1rem 3rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .cur-cta__trust {
+      margin-top: var(--space-xl);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    .cur-cta__trust span:nth-child(2) {
+      opacity: 0.4;
+    }
+
+
+    /* ---- Responsive ---- */
+    @media (max-width: 900px) {
+      .cur-feature__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+
+      .cur-feature__grid--reverse {
+        direction: ltr;
+      }
+
+      .cur-feature__media {
+        aspect-ratio: 16 / 11;
+        max-height: 480px;
+      }
+
+      .cur-supplement__strip {
+        grid-template-columns: 1fr;
+        gap: var(--space-3xl);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cur-hero {
+        height: 80vh;
+        min-height: 480px;
+      }
+
+      .cur-pillars__inner::before {
+        left: 23px;
+      }
+      .cur-pillar {
+        grid-template-columns: 48px 1fr;
+        gap: var(--space-lg);
+      }
+      .cur-pillar__number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+      }
+      .cur-pillar h3 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--hero" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="{{logo_url}}" alt="{{site_name}}" width="40" height="40">
+        {{site_name}}
+      </a>
+      <ul class="nav__links">
+        <li><a href="curriculum.html" class="nav__link nav__link--active">Curriculum</a></li>
+        <li><a href="nutrition.html" class="nav__link">Nutrition</a></li>
+        <li><a href="partners.html" class="nav__link">Partners</a></li>
+      </ul>
+      <a href="donate.html" class="btn btn-primary btn-sm nav__cta">Donate</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="curriculum.html" class="mobile-menu__link">Curriculum</a></li>
+      <li><a href="nutrition.html" class="mobile-menu__link">Nutrition</a></li>
+      <li><a href="partners.html" class="mobile-menu__link">Partners</a></li>
+      <li><a href="donate.html" class="btn btn-primary btn-lg" style="margin-top:1rem;">Donate</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ====== HERO ====== -->
+  <section class="cur-hero">
+    <img
+      src="{{curriculum_hero_image}}"
+      alt="{{curriculum_hero_image_alt}}"
+      class="cur-hero__img"
+      loading="eager"
+    >
+    <div class="cur-hero__overlay"></div>
+    <div class="cur-hero__content">
+      <span class="cur-hero__eyebrow cur-animate cur-animate--d1">Education+</span>
+      <h1 class="cur-animate cur-animate--d2">{{curriculum_headline}}</h1>
+      <p class="cur-animate cur-animate--d3">{{curriculum_subheadline}}</p>
+    </div>
+    <div class="cur-hero__bar"></div>
+  </section>
+
+
+  <!-- ====== INTRO ====== -->
+  <section class="cur-intro">
+    <div class="cur-intro__inner">
+      <p class="cur-intro__lead">{{curriculum_intro_lead}}</p>
+      <p class="cur-intro__sub">{{curriculum_intro_sub}}</p>
+    </div>
+  </section>
+
+
+  <!-- ====== PILLARS — Vertical numbered timeline ====== -->
+  <section class="cur-pillars">
+    <div class="cur-pillars__inner">
+      <div class="cur-pillar">
+        <div class="cur-pillar__number">01</div>
+        <div class="cur-pillar__body">
+          <h3>{{curriculum_pillar1_title}}</h3>
+          <p>{{curriculum_pillar1_desc}}</p>
+        </div>
+      </div>
+      <div class="cur-pillar">
+        <div class="cur-pillar__number">02</div>
+        <div class="cur-pillar__body">
+          <h3>{{curriculum_pillar2_title}}</h3>
+          <p>{{curriculum_pillar2_desc}}</p>
+        </div>
+      </div>
+      <div class="cur-pillar">
+        <div class="cur-pillar__number">03</div>
+        <div class="cur-pillar__body">
+          <h3>{{curriculum_pillar3_title}}</h3>
+          <p>{{curriculum_pillar3_desc}}</p>
+        </div>
+      </div>
+      <div class="cur-pillar">
+        <div class="cur-pillar__number">04</div>
+        <div class="cur-pillar__body">
+          <h3>{{curriculum_pillar4_title}}</h3>
+          <p>{{curriculum_pillar4_desc}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== GARDENING ====== -->
+  <section class="cur-feature">
+    <div class="cur-feature__grid">
+      <div class="cur-feature__media">
+        <img src="{{curriculum_garden_image}}" alt="{{curriculum_garden_image_alt}}" loading="lazy">
+      </div>
+      <div class="cur-feature__text">
+        <span class="eyebrow">{{curriculum_garden_eyebrow}}</span>
+        <h2>{{curriculum_garden_heading}}</h2>
+        <p>{{curriculum_garden_text}}</p>
+        <ul class="cur-feature__list">
+          <li>{{curriculum_garden_point1}}</li>
+          <li>{{curriculum_garden_point2}}</li>
+          <li>{{curriculum_garden_point3}}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== NUTRITIONAL EDUCATION ====== -->
+  <section class="cur-feature cur-feature--alt">
+    <div class="cur-feature__grid cur-feature__grid--reverse">
+      <div class="cur-feature__media">
+        <img src="{{curriculum_nuted_image}}" alt="{{curriculum_nuted_image_alt}}" loading="lazy">
+      </div>
+      <div class="cur-feature__text">
+        <span class="eyebrow">{{curriculum_nuted_eyebrow}}</span>
+        <h2>{{curriculum_nuted_heading}}</h2>
+        <p>{{curriculum_nuted_text}}</p>
+        <ul class="cur-feature__list">
+          <li>{{curriculum_nuted_point1}}</li>
+          <li>{{curriculum_nuted_point2}}</li>
+          <li>{{curriculum_nuted_point3}}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== SUPPLEMENT — Horizontal infographic strip with circular medallions ====== -->
+  <section class="cur-supplement cur-grain">
+    <div class="cur-supplement__inner">
+      <div class="cur-supplement__head">
+        <span class="cur-supplement__badge">{{curriculum_supplement_badge}}</span>
+        <h2>{{curriculum_supplement_heading}}</h2>
+        <p class="cur-supplement__text">{{curriculum_supplement_text}}</p>
+      </div>
+      <div class="cur-supplement__strip">
+        <div class="cur-supplement__stat">
+          <div class="cur-supplement__medallion">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="50"></circle>
+              <circle class="fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 0;"></circle>
+            </svg>
+            <strong>{{curriculum_supplement_stat1_value}}</strong>
+          </div>
+          <span>{{curriculum_supplement_stat1_label}}</span>
+        </div>
+        <div class="cur-supplement__stat">
+          <div class="cur-supplement__medallion">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="50"></circle>
+              <circle class="fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 0;"></circle>
+            </svg>
+            <strong>{{curriculum_supplement_stat2_value}}</strong>
+          </div>
+          <span>{{curriculum_supplement_stat2_label}}</span>
+        </div>
+        <div class="cur-supplement__stat">
+          <div class="cur-supplement__medallion">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="50"></circle>
+              <circle class="fill" cx="60" cy="60" r="50" style="stroke-dashoffset: 0;"></circle>
+            </svg>
+            <strong>{{curriculum_supplement_stat3_value}}</strong>
+          </div>
+          <span>{{curriculum_supplement_stat3_label}}</span>
+        </div>
+      </div>
+      <p class="cur-supplement__note">{{curriculum_supplement_note}}</p>
+    </div>
+  </section>
+
+
+  <!-- ====== CTA ====== -->
+  <section class="cur-cta">
+    <div class="cur-cta__inner">
+      <h2>{{curriculum_cta_heading}}</h2>
+      <p>{{curriculum_cta_text}}</p>
+      <a href="donate.html" class="btn btn-secondary btn-lg">
+        {{curriculum_cta_button}}
+      </a>
+      <div class="cur-cta__trust">
+        <span>501(c)(3) tax-deductible</span>
+        <span>&middot;</span>
+        <span>100% funds programs</span>
+      </div>
+    </div>
+  </section>
+
+
+  {{footer_html}}
+
+  <script src="main.js"></script>
+</body>
+</html>
