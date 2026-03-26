@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Be Ready — Editor Training Guide</title>
+  <meta name="description" content="A friendly, non-technical guide to editing the Let's Be Ready website.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #146BF6;
+      --blue-dark: #0F52BF;
+      --blue-light: #E8F0FE;
+      --yellow: #FFE500;
+      --yellow-soft: #FFF8CC;
+      --dark: #1E173C;
+      --text-muted: #6B6490;
+      --warm-white: #FAFAF8;
+      --light: #F5F4F0;
+      --border: #E8E6E1;
+      --white: #FFFFFF;
+      --success: #16A34A;
+      --success-light: #DCFCE7;
+      --warn: #B45309;
+      --warn-light: #FEF3C7;
+      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--dark);
+      background: var(--warm-white);
+      margin: 0;
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Layout ---- */
+    .doc {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3rem;
+      padding: 3rem 2rem;
+    }
+    @media (max-width: 900px) {
+      .doc { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 1rem; }
+    }
+
+    /* ---- Header ---- */
+    .doc__header {
+      grid-column: 1 / -1;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .doc__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.8rem;
+      background: var(--yellow);
+      color: var(--dark);
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .doc__brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--dark);
+      display: inline-block;
+    }
+    .doc__title {
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin: 1.25rem 0 0.5rem;
+      color: var(--dark);
+    }
+    .doc__subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.6;
+    }
+    .doc__meta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .doc__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .doc__pill strong { color: var(--dark); }
+
+    /* ---- Sticky table of contents ---- */
+    .toc {
+      position: sticky;
+      top: 2rem;
+      align-self: start;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      max-height: calc(100vh - 4rem);
+      overflow-y: auto;
+    }
+    .toc__title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 0.75rem;
+    }
+    .toc ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: tocnum;
+    }
+    .toc li {
+      counter-increment: tocnum;
+      margin: 0.3rem 0;
+    }
+    .toc a {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      padding: 0.4rem 0.5rem;
+      border-radius: 8px;
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.4;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .toc a::before {
+      content: counter(tocnum, decimal-leading-zero);
+      flex-shrink: 0;
+      font-family: var(--font);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: 0;
+    }
+    .toc a:hover {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+    }
+    @media (max-width: 900px) {
+      .toc { position: static; max-height: none; }
+    }
+
+    /* ---- Sections ---- */
+    .doc__main { min-width: 0; counter-reset: secnum; }
+    .section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 2.25rem;
+      margin-bottom: 1.5rem;
+      scroll-margin-top: 1rem;
+      counter-increment: secnum;
+    }
+    @media (max-width: 600px) { .section { padding: 1.5rem 1.25rem; } }
+    .section__num::before { content: counter(secnum); }
+    .section__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+    }
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--dark);
+    }
+    .section p {
+      margin: 0.75rem 0;
+      color: var(--dark);
+    }
+    .section p.muted, .section .muted {
+      color: var(--text-muted);
+    }
+    .section ul, .section ol {
+      padding-left: 1.25rem;
+      margin: 0.75rem 0;
+    }
+    .section li {
+      margin: 0.4rem 0;
+    }
+    .section strong { color: var(--dark); }
+    .section a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Numbered step list */
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      counter-reset: stepnum;
+    }
+    .steps > li {
+      counter-increment: stepnum;
+      position: relative;
+      padding: 0.75rem 0 0.75rem 2.75rem;
+      border-bottom: 1px dashed var(--border);
+    }
+    .steps > li:last-child { border-bottom: none; }
+    .steps > li::before {
+      content: counter(stepnum);
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 1.85rem;
+      height: 1.85rem;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    /* Callouts */
+    .callout {
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border-left: 4px solid;
+    }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+    .callout--tip { background: var(--success-light); border-color: var(--success); color: #14532D; }
+    .callout--tip strong { color: var(--success); }
+    .callout--warn { background: var(--warn-light); border-color: var(--warn); color: #78350F; }
+    .callout--warn strong { color: var(--warn); }
+    .callout--info { background: var(--blue-light); border-color: var(--blue); color: #1E3A8A; }
+    .callout--info strong { color: var(--blue); }
+
+    /* Screenshot placeholder (text-only, for the ones we still need to capture) */
+    .screenshot {
+      margin: 1.25rem 0;
+      padding: 2.5rem 1.5rem;
+      background: var(--light);
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    .screenshot::before {
+      content: '📸  ';
+      font-style: normal;
+    }
+
+    /* Real screenshot — figure with image + caption */
+    .shot {
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(30, 23, 60, 0.08);
+    }
+    .shot figcaption {
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Inline UI labels (mimic real button look) */
+    .ui {
+      display: inline-block;
+      padding: 0.1rem 0.55rem;
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      border-radius: 6px;
+      font-size: 0.86em;
+      font-weight: 700;
+      border: 1px solid rgba(20, 107, 246, 0.18);
+      white-space: nowrap;
+    }
+    .ui--key {
+      background: var(--white);
+      color: var(--dark);
+      border-color: var(--border);
+      box-shadow: 0 1px 0 var(--border);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.82em;
+    }
+
+    /* Quick reference table */
+    .qref {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+    }
+    .qref th, .qref td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+    .qref th {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .qref tr:last-child td { border-bottom: none; }
+    .qref tr:nth-child(even) td { background: var(--warm-white); }
+
+    /* Footer */
+    .doc__footer {
+      grid-column: 1 / -1;
+      margin-top: 2rem;
+      padding: 2rem 0;
+      border-top: 2px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .doc__footer strong { color: var(--dark); }
+
+    /* Print styles */
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .doc { display: block; max-width: 100%; padding: 0; }
+      .toc { display: none; }
+      .section { box-shadow: none; border: none; padding: 0; margin: 0 0 1rem; page-break-inside: avoid; }
+      .doc__header { padding: 0 0 1rem; }
+      .screenshot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="doc__header">
+      <span class="doc__brand"><span class="doc__brand-dot"></span> Let's Be Ready</span>
+      <h1 class="doc__title">Editor Training Guide</h1>
+      <p class="doc__subtitle">
+        Everything you need to know to update the Let's Be Ready website. Written for board members and content editors — no technical background needed. If you can use Google Docs, you can use this.
+      </p>
+      <div class="doc__meta">
+        <span class="doc__pill"><strong>Studio:</strong>&nbsp;letsbeready.sanity.studio</span>
+        <span class="doc__pill"><strong>Live site:</strong>&nbsp;letsbeready.org</span>
+        <span class="doc__pill">~15 min read</span>
+      </div>
+    </header>
+
+    <!-- ===================== SIDEBAR / TOC ===================== -->
+    <aside class="toc" aria-label="Contents">
+      <p class="toc__title">Contents</p>
+      <ol>
+        <li><a href="#start">Quick start</a></li>
+        <li><a href="#login">Logging in</a></li>
+        <li><a href="#tour">A tour of the studio</a></li>
+        <li><a href="#drafts">Drafts vs Published</a></li>
+        <li><a href="#golden">The golden rule: <em>Publish</em></a></li>
+        <li><a href="#pages">Editing a page</a></li>
+        <li><a href="#menus">The two ⋯ menus</a></li>
+        <li><a href="#people">Adding or editing people</a></li>
+        <li><a href="#photos">Adding photos</a></li>
+        <li><a href="#media">The media library</a></li>
+        <li><a href="#subscribers">Newsletter signups</a></li>
+        <li><a href="#donate">The donate page &amp; GiveLively</a></li>
+        <li><a href="#settings">Site Settings</a></li>
+        <li><a href="#classrooms">The classroom map</a></li>
+        <li><a href="#quickref">Quick reference</a></li>
+        <li><a href="#nope">Things you don't have to worry about</a></li>
+        <li><a href="#help">Getting help</a></li>
+      </ol>
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="doc__main">
+
+      <!-- 1. Quick start -->
+      <section class="section" id="start">
+        <h2><span class="section__num"></span>Quick start</h2>
+        <p>You'll work in two places:</p>
+        <ul>
+          <li><strong>The Studio</strong> — <a href="https://letsbeready.sanity.studio" target="_blank">letsbeready.sanity.studio</a> — this is where you make changes. Think of it as the back office.</li>
+          <li><strong>The Live Site</strong> — <a href="https://letsbeready.org" target="_blank">letsbeready.org</a> — this is what visitors see. Your changes appear here automatically about 30 seconds after you publish them.</li>
+        </ul>
+        <p>You won't ever need to touch code, files, or anything technical. Just click into a field, type, and hit Publish.</p>
+        <div class="callout callout--info">
+          <strong>The 30-second rule</strong>
+          After you click Publish in the Studio, give it about 30 seconds before refreshing the live site. The site rebuilds in the background — be a little patient and your changes will appear.
+        </div>
+      </section>
+
+      <!-- 2. Logging in -->
+      <section class="section" id="login">
+        <h2><span class="section__num"></span>Logging in</h2>
+        <ol class="steps">
+          <li>Open <a href="https://letsbeready.sanity.studio" target="_blank">letsbeready.sanity.studio</a> in your browser (Chrome, Safari, Firefox, Edge — all work).</li>
+          <li>You'll be asked to sign in. Use the same email address that was used to invite you (Google sign-in works for Gmail and Google Workspace accounts).</li>
+          <li>That's it — you're in. Bookmark the page so you can find it again.</li>
+        </ol>
+        <div class="callout callout--tip">
+          <strong>Works on any device</strong>
+          You can edit from a laptop, desktop, iPad, or even your phone. The studio is responsive and works in any modern browser. No app to install.
+        </div>
+      </section>
+
+      <!-- 3. Tour -->
+      <section class="section" id="tour">
+        <h2><span class="section__num"></span>A tour of the studio</h2>
+        <p>When you log in, you'll see a sidebar on the left. Each item is a different kind of content you can edit. Here's what each one does:</p>
+
+        <figure class="shot">
+          <img src="assets/training/sidebar.png" alt="Sanity Studio sidebar showing Subscribers, Pages, Classrooms, Team Members, Staff Members, Partners, Expense Allocation, and Site Settings">
+          <figcaption>The Studio sidebar — every kind of content lives here.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>📬 Subscribers</strong> — everyone who signed up for the newsletter. New ones appear at the top automatically.</li>
+          <li><strong>Pages</strong> — the actual pages on the website. Click this to expand and see Home, Curriculum, Nutrition, Donate, Partners, and Staff.</li>
+          <li><strong>Classrooms</strong> — every classroom that appears on the homepage map.</li>
+          <li><strong>Team Members (leadership)</strong> — the leadership team that appears on the homepage.</li>
+          <li><strong>Staff Members (full staff)</strong> — the broader staff list (teachers, coordinators) that appears on the optional Staff page.</li>
+          <li><strong>Partners</strong> — the partner organizations on the Partners page.</li>
+          <li><strong>Expense Allocation</strong> — the percentages that make up the financial pie chart on the homepage.</li>
+          <li><strong>Site Settings</strong> — global stuff that appears everywhere (logo, contact email, social links, footer text). Set it once, it shows up on every page.</li>
+        </ul>
+        <p>At the very top of the screen, you'll also see a <span class="ui">Media</span> tab — that's the photo library where every image lives. More on that below.</p>
+      </section>
+
+      <!-- Drafts vs Published toggle -->
+      <section class="section" id="drafts">
+        <h2><span class="section__num"></span>Wait — why can't I type? Drafts vs Published</h2>
+        <p>This is the #1 source of confusion for new editors. When you open a document for the first time, the fields will look greyed out and you can't type into them. <strong>You're not broken</strong> — you're just looking at the live published version, which is read-only on purpose so nobody accidentally edits live content.</p>
+        <p>To enable editing, you need to switch from <strong>Published</strong> to <strong>Drafts</strong>:</p>
+        <figure class="shot">
+          <img src="assets/training/perspective-toggle.png" alt="Top-right Published/Drafts toggle dropdown showing Published, Drafts, and New release options">
+          <figcaption>The Published/Drafts toggle in the upper-right corner of the Studio.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Look at the top-right of the Studio, in the very top bar. You'll see a button that says either <strong>Published</strong> (green dot) or <strong>Drafts</strong> (grey dot).</li>
+          <li>Click that button — a small dropdown opens.</li>
+          <li>Click <strong>Drafts</strong>.</li>
+          <li>The fields are now editable. Make your changes.</li>
+          <li>Click the <strong>Publish</strong> button in the bottom-right when you're done (more on this in the next section).</li>
+        </ol>
+        <h3>Why two modes?</h3>
+        <ul>
+          <li><strong>Published</strong> view = what visitors currently see on the website. Locked. Look but don't touch.</li>
+          <li><strong>Drafts</strong> view = your private editing workspace. Your changes here aren't visible to visitors until you click Publish.</li>
+        </ul>
+        <p>You can switch between the two anytime. If you want to compare your draft to the live site, just toggle.</p>
+        <div class="callout callout--info">
+          <strong>If you can't type, check the toggle</strong>
+          Whenever a field seems "stuck" or read-only, your first move should be to look at the top-right corner. If it says <strong>Published</strong>, switch to <strong>Drafts</strong> and try again.
+        </div>
+        <p class="muted"><em>Note: there's also a <strong>+ New release</strong> option in that dropdown. Ignore it. That's an advanced feature for scheduling batched changes — most editors will never need it.</em></p>
+      </section>
+
+      <!-- Golden rule -->
+      <section class="section" id="golden">
+        <h2><span class="section__num"></span>The other golden rule: <em>Publish</em></h2>
+        <p>Once you've switched to Drafts and made your changes, the second thing you have to remember is:</p>
+        <div class="callout callout--warn">
+          <strong>Nothing goes live until you click PUBLISH</strong>
+          When you change a field in Drafts mode, the studio saves your work automatically. But drafts are private — they don't appear on the website. You have to click the <span class="ui">Publish</span> button in the <strong>bottom-right</strong> of the document to push your changes live.
+        </div>
+        <p>If you ever change something and it doesn't appear on the website, this is almost always why. Go back, check that you clicked Publish, and wait ~30 seconds for the site to update.</p>
+        <p>The Publish button looks slightly different depending on the state:</p>
+        <ul>
+          <li><strong>Highlighted "Publish"</strong> — there are unpublished changes. Click it.</li>
+          <li><strong>Greyed "Published"</strong> — everything is up to date. Nothing to do.</li>
+        </ul>
+      </section>
+
+      <!-- 5. Editing a page -->
+      <section class="section" id="pages">
+        <h2><span class="section__num"></span>Editing a page</h2>
+        <p>Most of the website's content lives under <strong>Pages</strong> in the sidebar. Let's walk through editing one — say, the Curriculum page.</p>
+        <ol class="steps">
+          <li>Click <span class="ui">Pages</span> in the sidebar, then click <span class="ui">Curriculum Page</span>.</li>
+          <li>You'll see tabs at the top: <strong>Hero</strong>, <strong>Intro</strong>, <strong>Pillars</strong>, <strong>Gardening</strong>, <strong>Nutritional Education</strong>, <strong>Supplement Highlight</strong>, <strong>CTA</strong>. These match the sections of the page in order.</li>
+          <li>Click any tab and you'll see the fields inside it — headlines, body text, image slots, etc.</li>
+          <li>Click into a field and edit it. The Studio auto-saves your draft as you type.</li>
+          <li>When you're done, click the green <span class="ui">Publish</span> button in the top right.</li>
+          <li>Wait ~30 seconds, then refresh letsbeready.org/curriculum to see the change.</li>
+        </ol>
+
+        <figure class="shot">
+          <img src="assets/training/curriculum-editor.png" alt="Curriculum Page open in the Studio with the Hero tab selected, showing the Hero Image and Hero Image Alt fields">
+          <figcaption>Editing the Curriculum page — tabs at the top, fields below, Publish in the bottom-right.</figcaption>
+        </figure>
+
+        <h3>The same pattern works for every page</h3>
+        <p>Home Page, Nutrition Page, Donate Page, Partners Page, and Staff Page all work exactly the same way. Click the page → click a tab → edit the fields → publish.</p>
+        <div class="callout callout--tip">
+          <strong>Some fields say "HTML allowed"</strong>
+          You can mostly ignore this. Just type your text. If you want to make a word italic, you can wrap it in <code>&lt;em&gt;like this&lt;/em&gt;</code>. If you want a line break, use <code>&lt;br&gt;</code>. But plain text works fine for almost everything.
+        </div>
+      </section>
+
+      <!-- The two ⋯ menus -->
+      <section class="section" id="menus">
+        <h2><span class="section__num"></span>The two <code>⋯</code> menus on every document</h2>
+        <p>When you open any document in the Studio, you'll notice <strong>two different three-dot (<code>⋯</code>) menus</strong>. They look similar but do completely different things. This trips everyone up at first, so it's worth a minute to learn.</p>
+
+        <h3>Top <code>⋯</code> menu — upper-right of the page</h3>
+        <p>This is the <strong>history &amp; document tools</strong> menu. Most editors only need <strong>History</strong>; the rest are for occasional or advanced use.</p>
+        <figure class="shot">
+          <img src="assets/training/menu-top.png" alt="Top-right menu showing Create new task, History, Inspect, Compare versions, Copy document, Paste document">
+          <figcaption>The top-right menu — history and document tools.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>History</strong> — opens a panel showing every saved version of this document over time. Pick a past version to compare or restore it. <strong>This is your undo button</strong> for text edits.</li>
+          <li><strong>Compare versions</strong> — same idea, but only available once you've selected two versions in History to diff. Greyed out otherwise.</li>
+          <li><strong>Create new task</strong> — assign a follow-up to a teammate (e.g., "double-check this bio"). Optional collaboration feature, no harm in ignoring it.</li>
+          <li><strong>Copy document</strong> / <strong>Paste document</strong> — copy a whole document to the clipboard so you can paste it elsewhere. Editors won't usually need these.</li>
+          <li><strong>Inspect</strong> — shows the raw underlying data. Developer-only — ignore.</li>
+        </ul>
+
+        <h3>Bottom <code>⋯</code> menu — next to the Publish button</h3>
+        <p>This is the <strong>action menu</strong>. It does things <em>to</em> the document — and a couple of these are the only buttons in the Studio that can actually mess things up.</p>
+        <figure class="shot">
+          <img src="assets/training/menu-bottom.png" alt="Bottom-right document menu showing Link to Canvas, Unpublish, Duplicate, Delete">
+          <figcaption>The bottom-right action menu — the destructive options live here.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Link to Canvas</strong> — Sanity's AI editing tool. <strong>Ignore this.</strong> Editors don't need it.</li>
+          <li><strong>Duplicate</strong> — makes a copy of the document with a new ID. Useful when you want to add a new person or item similar to an existing one. Duplicate it, change the name and details, then publish.</li>
+          <li><strong>Unpublish</strong> — removes the document from the live site but keeps the draft in the Studio. Use this if you want to temporarily hide a page or item without deleting it. To bring it back, just click Publish again. <strong>Takes effect immediately.</strong></li>
+          <li><strong>Delete</strong> — <strong>permanently</strong> removes the document. There's a confirmation dialog, but once it's gone it's much harder to get back. For people, partners, classrooms — anything with an Active toggle — <strong>prefer toggling Active OFF</strong> instead of deleting. Same effect on the live site, but the document stays around.</li>
+        </ul>
+
+        <div class="callout callout--warn">
+          <strong>Be deliberate with Delete and Unpublish</strong>
+          These two take effect immediately on the live site. Text and photo edits are easy to roll back from History. Deleted documents are much harder to recover. When you're not sure, hide first (toggle Active OFF) and ask before clicking.
+        </div>
+      </section>
+
+      <!-- 6. People -->
+      <section class="section" id="people">
+        <h2><span class="section__num"></span>Adding or editing people</h2>
+        <p>There are two separate lists of people:</p>
+        <ul>
+          <li><strong>Team Members (leadership)</strong> — the small group of leaders shown on the homepage (e.g., Garrett, Sara, Lucy, Fred).</li>
+          <li><strong>Staff Members (full staff)</strong> — the broader staff list (teachers, field coordinators, cooks) shown on the optional Staff page.</li>
+        </ul>
+        <p>Both work the same way. Here's how to add a new person:</p>
+        <ol class="steps">
+          <li>Click <span class="ui">Team Members</span> (or <span class="ui">Staff Members</span>) in the sidebar.</li>
+          <li>Click the <span class="ui">+ Create</span> button at the top right.</li>
+          <li>Fill in the fields: Name, Role, Bio, and upload a Photo.</li>
+          <li>Make sure <strong>Active</strong> is toggled ON. (Toggling it OFF hides the person without deleting them.)</li>
+          <li>Set <strong>Display Order</strong> — lower numbers appear first. So 0 is first, 1 is second, and so on.</li>
+          <li>Click <span class="ui">Publish</span>.</li>
+        </ol>
+
+        <h3>To remove someone</h3>
+        <p>You have two options. Pick whichever fits:</p>
+        <ul>
+          <li><strong>Hide (recommended)</strong> — open the person, toggle <strong>Active</strong> to OFF, click Publish. They disappear from the website but stay in your list. Easy to bring back.</li>
+          <li><strong>Delete (permanent)</strong> — open the person, click the <span class="ui">⋯</span> menu, choose Delete. Gone forever.</li>
+        </ul>
+
+        <div class="callout callout--info">
+          <strong>The grids on the website auto-flow</strong>
+          You can add as many people as you want. The team grid on the homepage and the staff grid on the staff page automatically rearrange to fit, no matter how many people are in the list. You don't need to think about layout.
+        </div>
+      </section>
+
+      <!-- 7. Photos -->
+      <section class="section" id="photos">
+        <h2><span class="section__num"></span>Adding photos</h2>
+        <p>Anywhere you see an image field, you can upload a new photo or pick one from the media library.</p>
+        <ol class="steps">
+          <li>Click into the image field (e.g., a person's Photo, the homepage Hero Image, etc.).</li>
+          <li>You'll see two options: <span class="ui">Upload</span> a new file from your computer, or <span class="ui">Select</span> from the media library (recommended if the photo is already there).</li>
+          <li>Once the photo is in, you can click and drag the dot in the middle to set the <strong>focal point</strong>. This tells the site what to keep in the center when it crops for different screen sizes.</li>
+          <li>Click <span class="ui">Publish</span>.</li>
+        </ol>
+        <div class="callout callout--tip">
+          <strong>Photo size doesn't matter</strong>
+          Upload the original full-resolution photo from your phone or camera. The site automatically resizes it for every device — small versions for phones, big versions for desktops. Don't waste time shrinking photos before uploading.
+        </div>
+      </section>
+
+      <!-- 8. Media library -->
+      <section class="section" id="media">
+        <h2><span class="section__num"></span>The media library</h2>
+        <p>Every photo you've ever uploaded to the studio is stored in one place: the <strong>Media library</strong>. You can browse it, search it, tag photos, and reuse them across the entire site without re-uploading.</p>
+        <ol class="steps">
+          <li>At the top of the studio, click the <span class="ui">Media</span> tab.</li>
+          <li>You'll see thumbnails of every uploaded photo.</li>
+          <li>To upload more, just drag and drop them onto the page — you can do many at once.</li>
+          <li>Click a photo to add tags (like "hero", "classroom", "team") or change its alt text and credit. This makes them easy to find later.</li>
+          <li>To use a photo somewhere on the site, go to that page's image field and click <span class="ui">Select</span> — you'll see the same library and can pick any photo.</li>
+        </ol>
+
+        <figure class="shot">
+          <img src="assets/training/media-library.png" alt="The Media tab in Sanity Studio showing thumbnails of uploaded classroom photos">
+          <figcaption>The Media library — every photo you've ever uploaded, in one searchable grid.</figcaption>
+        </figure>
+
+        <div class="callout callout--info">
+          <strong>One photo, used many places</strong>
+          The same photo can appear in multiple spots on the site — homepage, curriculum, partners — without being uploaded multiple times. Update it in the media library and it changes everywhere.
+        </div>
+      </section>
+
+      <!-- 9. Subscribers -->
+      <section class="section" id="subscribers">
+        <h2><span class="section__num"></span>Newsletter signups</h2>
+        <p>Whenever someone enters their email in the footer "Stay Updated" form, they show up in <strong>📬 Subscribers</strong> at the top of the sidebar.</p>
+        <ol class="steps">
+          <li>Click <span class="ui">📬 Subscribers</span> in the sidebar.</li>
+          <li>The newest signups are at the top.</li>
+          <li>Click any subscriber to see their email, signup date, and which page they came from.</li>
+          <li>Use the <strong>Internal notes</strong> field to record things like "asked to unsubscribe" or "follow-up sent" — this is for your reference, donors don't see it.</li>
+        </ol>
+
+        <h3>Exporting the list</h3>
+        <p>To get all subscribers as a CSV file (e.g., to import into Mailchimp or send a campaign):</p>
+        <ol class="steps">
+          <li>Open the Subscribers list.</li>
+          <li>Click the <span class="ui">⋯</span> menu in the top right.</li>
+          <li>Choose <strong>Export</strong>.</li>
+          <li>You'll get a downloadable file with everyone's email and signup details.</li>
+        </ol>
+
+        <div class="callout callout--warn">
+          <strong>This is your inbox, not a sender</strong>
+          Sanity stores who signed up. It does <em>not</em> send the newsletter for you. You'll still need a service like Mailchimp, MailerLite, or Constant Contact to actually send emails. The subscribers list here is just where you keep track of who wants to hear from you.
+        </div>
+      </section>
+
+      <!-- 10. Donate -->
+      <section class="section" id="donate">
+        <h2><span class="section__num"></span>The donate page &amp; GiveLively</h2>
+        <p>The donation form on the donate page is provided by <strong>GiveLively</strong>. It's embedded into our page, but the donation processing, receipts, and donor records all live in your GiveLively dashboard — not in Sanity.</p>
+
+        <h3>Where donations go</h3>
+        <ul>
+          <li><strong>To see donations</strong>: log into <a href="https://secure.givelively.org" target="_blank">secure.givelively.org</a>. Every donation appears there with name, amount, email, and date.</li>
+          <li><strong>To download donor records</strong>: GiveLively dashboard → Data Reports → Export.</li>
+          <li><strong>To change suggested donation amounts</strong> ($25, $50, $100, etc.): GiveLively dashboard → Donation Widgets → Simple Donation Widget → edit the suggested amounts → save. The widget on letsbeready.org will update automatically.</li>
+        </ul>
+
+        <h3>What you <em>can</em> edit on the donate page in Sanity</h3>
+        <ul>
+          <li><strong>Hero</strong> — the headline, subheadline, photo, quote, and stats on the left side</li>
+          <li><strong>Sponsor a Classroom card</strong> — the $3,800/year tier card</li>
+          <li><strong>Lifetime Impact</strong> — the "$1.2M+ raised since 2008" stat block (currently placeholder — please update with real numbers from the annual report)</li>
+          <li><strong>Where Your Money Goes</strong> — the percentage bars</li>
+          <li><strong>Mail-a-check info</strong> — the address for paper check donations</li>
+        </ul>
+
+        <h3>The Sponsor a Classroom button</h3>
+        <p>This button is intentionally <em>not</em> connected to GiveLively. When someone clicks it, it opens their email client with a pre-written message asking the org to get in touch. Sponsorships are major-gift conversations — you want a phone call with these donors, not a generic form submission.</p>
+        <p>Sponsor inquiries land in <strong>contact@letsbeready.org</strong>. Reply personally — these are your highest-value donors.</p>
+
+        <div class="callout callout--info">
+          <strong>The Lifetime Impact numbers are placeholders</strong>
+          The current values ($1.2M+, 3,400+, 180+) are made-up estimates. When you have real numbers from the annual report, edit them in <strong>Pages → Donate Page → Lifetime Impact</strong> tab. Each field is marked as a placeholder in the description.
+        </div>
+      </section>
+
+      <!-- 11. Site settings -->
+      <section class="section" id="settings">
+        <h2><span class="section__num"></span>Site Settings</h2>
+        <p>Site Settings is where you change anything that appears on <em>every</em> page — the logo, contact email, social media links, footer text, etc. Update it once and it changes across the entire site.</p>
+        <ol class="steps">
+          <li>Click <span class="ui">Site Settings</span> at the bottom of the sidebar.</li>
+          <li>You'll see tabs for <strong>Brand</strong>, <strong>Contact &amp; Address</strong>, <strong>Social Links</strong>, <strong>SEO / Sharing</strong>, and <strong>Footer</strong>.</li>
+          <li>Edit any field, then click Publish.</li>
+        </ol>
+
+        <h3>What's in each tab</h3>
+        <ul>
+          <li><strong>Brand</strong> — the site name, logo image, favicon (the little icon in browser tabs)</li>
+          <li><strong>Contact &amp; Address</strong> — the contact email used in every "Contact Us" link and mail-to button across the site, and the physical address shown in the footer</li>
+          <li><strong>Social Links</strong> — Facebook, Instagram, YouTube, and GlobalGiving URLs (used in the footer icons and the Donate page)</li>
+          <li><strong>SEO / Sharing</strong> — the default image that appears when someone shares a link to letsbeready.org on Facebook, Twitter, etc.</li>
+          <li><strong>Footer</strong> — the footer description text and the three trust pills ("Verified 501(c)(3)", "100% to Programs", "Since 2008")</li>
+        </ul>
+
+        <div class="callout callout--tip">
+          <strong>Change the contact email in one place</strong>
+          If your contact email ever changes, you only need to update it in Site Settings → Contact &amp; Address. It will automatically update in the footer of every page, the donate page contact button, the sponsor a classroom email, and everywhere else it appears.
+        </div>
+      </section>
+
+      <!-- 12. Classrooms -->
+      <section class="section" id="classrooms">
+        <h2><span class="section__num"></span>The classroom map</h2>
+        <p>The interactive map on the homepage shows every classroom Let's Be Ready supports. Each pin is a real classroom you can click to see details.</p>
+        <h3>To add a new classroom</h3>
+        <ol class="steps">
+          <li>Click <span class="ui">Classrooms</span> in the sidebar.</li>
+          <li>Click <span class="ui">+ Create</span>.</li>
+          <li>Fill in: <strong>ID</strong> (next available number), <strong>Community</strong>, <strong>Department</strong>, <strong>Teacher Name</strong>, <strong>Number of Students</strong>, <strong>Latitude</strong>, <strong>Longitude</strong>, and <strong>Year Started</strong>.</li>
+          <li>Click Publish. The map updates in 30 seconds.</li>
+        </ol>
+        <div class="callout callout--info">
+          <strong>How to find latitude and longitude</strong>
+          Open Google Maps, find the village, right-click on the spot, and click the coordinates that appear at the top of the menu — this copies them to your clipboard. Paste the first number into Latitude, the second into Longitude.
+        </div>
+      </section>
+
+      <!-- 13. Quick reference -->
+      <section class="section" id="quickref">
+        <h2><span class="section__num"></span>Quick reference</h2>
+        <p>Most common tasks and where to do them:</p>
+        <table class="qref">
+          <thead>
+            <tr><th>I want to…</th><th>Where</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Change a headline or paragraph on a page</td><td>Pages → that page → relevant tab → publish</td></tr>
+            <tr><td>Change the contact email</td><td>Site Settings → Contact &amp; Address</td></tr>
+            <tr><td>Update a social media URL</td><td>Site Settings → Social Links</td></tr>
+            <tr><td>Add a new team member</td><td>Team Members → + Create</td></tr>
+            <tr><td>Add a new staff person</td><td>Staff Members → + Create</td></tr>
+            <tr><td>Hide someone temporarily</td><td>Open them → toggle Active OFF → publish</td></tr>
+            <tr><td>Add or update a partner</td><td>Partners → + Create or click existing</td></tr>
+            <tr><td>Add a new classroom to the map</td><td>Classrooms → + Create</td></tr>
+            <tr><td>Upload photos in bulk</td><td>Media tab (top of studio) → drag and drop</td></tr>
+            <tr><td>See newsletter signups</td><td>📬 Subscribers (top of sidebar)</td></tr>
+            <tr><td>Export subscribers as CSV</td><td>📬 Subscribers → ⋯ menu → Export</td></tr>
+            <tr><td>See donations</td><td>secure.givelively.org dashboard (not in Sanity)</td></tr>
+            <tr><td>Change suggested donation amounts</td><td>GiveLively dashboard → Donation Widgets</td></tr>
+            <tr><td>Update the lifetime impact stats</td><td>Pages → Donate Page → Lifetime Impact tab</td></tr>
+            <tr><td>Show/hide the staff page link on homepage</td><td>Pages → Staff Page → Show staff page link toggle</td></tr>
+            <tr><td>Edit the footer</td><td>templates/_footer.html (developer task) or Site Settings → Footer for the editable parts</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 14. Things you don't have to worry about -->
+      <section class="section" id="nope">
+        <h2><span class="section__num"></span>Things you don't have to worry about</h2>
+        <p>Here's a list of things you might wonder about. Don't. They're all automatic:</p>
+        <ul>
+          <li><strong>Code, hosting, servers</strong> — handled.</li>
+          <li><strong>Resizing photos</strong> — automatic. Upload the biggest version you have.</li>
+          <li><strong>The website rebuilding</strong> — happens automatically every time you publish. You don't have to "deploy" anything.</li>
+          <li><strong>Backups</strong> — Sanity keeps the full edit history of every document. You can roll back any change to any previous version.</li>
+          <li><strong>Mobile responsiveness</strong> — the site automatically rearranges itself for phones, tablets, and desktops.</li>
+          <li><strong>SSL / HTTPS</strong> — handled by the hosting platform.</li>
+          <li><strong>Tax receipts for donors</strong> — handled by GiveLively automatically.</li>
+          <li><strong>Spam in the newsletter signup</strong> — there's a hidden honeypot field that filters bots silently. You should very rarely see spam in your subscribers list.</li>
+        </ul>
+      </section>
+
+      <!-- 15. Help -->
+      <section class="section" id="help">
+        <h2><span class="section__num"></span>Getting help</h2>
+        <p>If something isn't working or you can't figure out where to edit something:</p>
+        <ul>
+          <li><strong>For Studio / website issues</strong>: contact your developer.</li>
+          <li><strong>For donation / GiveLively issues</strong>: GiveLively support is at <a href="mailto:support@givelively.org">support@givelively.org</a>. They're responsive and good.</li>
+          <li><strong>For Sanity-specific questions</strong>: <a href="https://www.sanity.io/docs" target="_blank">sanity.io/docs</a> has plain-English guides for almost everything.</li>
+        </ul>
+        <div class="callout callout--tip">
+          <strong>Most edits are reversible — but not all</strong>
+          Text and photo edits can be rolled back from the top-right <strong>⋯ → History</strong> menu. Deleted documents are much harder to recover, and Unpublish takes effect on the live site immediately. Be deliberate with those, and when in doubt, ask before clicking.
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="doc__footer">
+      <p><strong>Let's Be Ready</strong> — Editor Training Guide</p>
+      <p>If anything in this guide is wrong, outdated, or confusing, tell your developer so it can be fixed.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
