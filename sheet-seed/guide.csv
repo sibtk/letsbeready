@@ -1,0 +1,41 @@
+topic,info
+Welcome!,"This sheet controls the entire website. You can change any text, photo, or number — and the website will update when you publish."
+,
+--- HOW TO UPDATE THE WEBSITE ---,
+Step 1,"Change whatever you need in this spreadsheet (fix a typo, update a number, add a team member, etc.)"
+Step 2,"When you're happy with your changes, go to the menu bar at the top and click: LBR Website > Publish Changes"
+Step 3,"Wait about 30 seconds, then refresh the website. Your changes are live!"
+Good to know,Nothing happens until you click Publish. You can make as many edits as you want first.
+,
+--- WHAT EACH TAB DOES ---,
+Site Content,"All the words on the website. Change the text in the ""value"" column. Leave the ""key"" column alone."
+Team Members,"The people shown on the website. You can change names, titles, bios, and photos. Uncheck ""active"" to hide someone."
+Classrooms,"Each row is a classroom on the map. You can update teacher names, student counts, etc."
+Donation Amounts,"The dollar amount buttons on the donation page. Check ""featured"" on the one you want highlighted."
+Partners,"Organizations on the Partners page. Add a new row to add a partner, delete a row to remove one."
+Expense Allocation,The pie chart on the homepage. Update the percentages when you have new financial data.
+,
+--- WHAT NOT TO TOUCH ---,
+"The ""key"" column","In the Site Content tab, the first column has things like ""hero_headline"" — don't change these. They're how the website knows where to put the text."
+Column headers,"The very first row of each tab (key, value, name, etc.) — leave those as they are."
+Tab names,Don't rename the tabs at the bottom of the sheet.
+,
+--- MAKING TEXT BOLD OR ITALIC ---,
+Important!,Using the bold button (B) in Google Sheets does NOT make it bold on the website. You have to type special codes around the words instead.
+To make text bold,Type <strong> before the word and </strong> after it. Example: <strong>95%</strong> shows as bold 95% on the site.
+To make text italic,Type <em> before the word and </em> after it. Example: <em>all</em> shows as italic all on the site.
+To start a new line,"Type <br> where you want the line to break. Example: ""You can't learn<br>when you're hungry"" puts each part on its own line."
+,
+--- CHANGING PHOTOS ---,
+How it works,"Photos are stored as web links (URLs). To change a photo, paste a new link into the cell."
+Which cells are photos?,"In Site Content, look for keys that end in _url or _image — those are photos."
+Where to upload new photos,"Upload to Google Drive, set sharing to ""Anyone with the link"", then use the link. Ask Sibtain if you need help with this."
+,
+--- IF SOMETHING GOES WRONG ---,
+Text disappeared from the site,"You may have accidentally changed something in the ""key"" column. Check that column — undo if needed (Ctrl+Z or Cmd+Z)."
+Photo isn't showing,The link to the photo may be broken. Make sure the image URL still works by pasting it in your browser.
+Changes aren't showing up,"Did you click Publish? If yes, try waiting a minute and refreshing the page. Still nothing? Ask Sibtain."
+I messed something up,Don't panic! You can always undo with Ctrl+Z (or Cmd+Z on Mac). Google Sheets also saves every version — go to File > Version history to go back in time.
+,
+--- NEED HELP? ---,
+Contact,"Reach out to Sibtain for any website questions. For content questions, coordinate with John."

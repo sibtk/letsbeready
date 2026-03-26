@@ -1,0 +1,14 @@
+{
+  "name": "letsbeready-org",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Let's Be Ready - nonprofit website with Google Sheets CMS",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "python3 -m http.server 8080 --directory dist"
+  },
+  "dependencies": {
+    "google-spreadsheet": "^4.1.0",
+    "google-auth-library": "^9.0.0"
+  }
+}

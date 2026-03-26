@@ -1115,128 +1115,82 @@ section {
 }
 
 @keyframes morphIn {
-  from {
-    opacity: 0;
-    filter: blur(12px);
-    transform: scale(1.06);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Aliases for old names so existing references don't break */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    filter: blur(10px);
-    transform: scale(1.04);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: translateY(16px) translateZ(0); }
+  to { opacity: 1; transform: translateY(0) translateZ(0); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    filter: blur(8px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    filter: blur(8px);
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    filter: blur(10px);
-    transform: translateX(-10px) scale(1.03);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0) scale(1);
-  }
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes countUp {
-  from { opacity: 0; filter: blur(6px); transform: scale(1.08); }
-  to { opacity: 1; filter: blur(0); transform: scale(1); }
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* Scroll reveal classes — morph in */
+/* Scroll reveal classes */
 .reveal {
   opacity: 0;
-  filter: blur(10px);
-  transform: scale(1.04);
-  transition: opacity 0.8s var(--ease-out), filter 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transform: translateY(16px) translateZ(0);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 
 .reveal.visible {
   opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
+  transform: translateY(0) translateZ(0);
 }
 
 .reveal-left {
   opacity: 0;
-  filter: blur(10px);
-  transform: translateX(-10px) scale(1.03);
-  transition: opacity 0.8s var(--ease-out), filter 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transform: translateX(-12px) translateZ(0);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 
 .reveal-left.visible {
   opacity: 1;
-  filter: blur(0);
-  transform: translateX(0) scale(1);
+  transform: translateX(0) translateZ(0);
 }
 
 .reveal-scale {
   opacity: 0;
-  filter: blur(8px);
-  transform: scale(0.94);
-  transition: opacity 0.8s var(--ease-out), filter 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transform: scale(0.96) translateZ(0);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 
 .reveal-scale.visible {
   opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
+  transform: scale(1) translateZ(0);
 }
 
-/* Stagger children — morph with delay */
+/* Stagger children */
 .stagger-children > * {
   opacity: 0;
-  filter: blur(10px);
-  transform: scale(1.04);
-  transition: opacity 0.7s var(--ease-out), filter 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transform: translateY(12px) translateZ(0);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
 }
 
-.stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; filter: blur(0); transform: scale(1); }
-.stagger-children.visible > *:nth-child(2) { transition-delay: 80ms; opacity: 1; filter: blur(0); transform: scale(1); }
-.stagger-children.visible > *:nth-child(3) { transition-delay: 160ms; opacity: 1; filter: blur(0); transform: scale(1); }
-.stagger-children.visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; filter: blur(0); transform: scale(1); }
-.stagger-children.visible > *:nth-child(5) { transition-delay: 320ms; opacity: 1; filter: blur(0); transform: scale(1); }
-.stagger-children.visible > *:nth-child(6) { transition-delay: 400ms; opacity: 1; filter: blur(0); transform: scale(1); }
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0) translateZ(0); }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 60ms; opacity: 1; transform: translateY(0) translateZ(0); }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 120ms; opacity: 1; transform: translateY(0) translateZ(0); }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 180ms; opacity: 1; transform: translateY(0) translateZ(0); }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 240ms; opacity: 1; transform: translateY(0) translateZ(0); }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 300ms; opacity: 1; transform: translateY(0) translateZ(0); }
 
 /* --- Donate Page --- */
 
@@ -1511,16 +1465,34 @@ section {
   gap: var(--space-sm);
 }
 
-#card-element {
-  padding: 0.75rem 0.875rem;
-  background: var(--warm-white);
-  border: 1.5px solid var(--border);
+/* GoLively iframe container */
+.golively-container {
+  margin: var(--space-md) 0;
   border-radius: var(--radius);
+  overflow: hidden;
 }
 
-.donate-form__submit {
+.golively-container iframe {
   width: 100%;
-  margin-top: var(--space-md);
+  min-height: 400px;
+  border: none;
+}
+
+.golively-placeholder {
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  background: var(--warm-white);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.golively-placeholder code {
+  background: var(--light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8125rem;
 }
 
 .donate-form__fee-note {
@@ -1637,6 +1609,171 @@ section {
   color: var(--blue);
   font-size: 0.6875rem;
   flex-shrink: 0;
+}
+
+/* --- Partners Page --- */
+.partners-hero {
+  padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-3xl);
+  background: var(--warm-white);
+  text-align: center;
+}
+
+.partners-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: var(--space-md) 0;
+}
+
+.partners-hero p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.partners-grid-section {
+  padding: var(--space-4xl) 0;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.partner-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.partner-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.partner-card__logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-card__logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.partner-card__name {
+  font-size: 1.0625rem;
+  margin-bottom: var(--space-xs);
+  color: var(--dark);
+}
+
+.partner-card__desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.partners-cta {
+  padding: var(--space-4xl) 0;
+  background: var(--warm-white);
+}
+
+.partners-cta__content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.partners-cta__content h2 {
+  margin-bottom: var(--space-md);
+}
+
+.partners-cta__content p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-xl);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Sponsor a Classroom card --- */
+.sponsor-classroom {
+  background: var(--blue-light);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-top: var(--space-lg);
+  position: relative;
+}
+
+.sponsor-classroom__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--blue);
+  color: var(--white);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sponsor-classroom h4 {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.0625rem;
+  color: var(--dark);
+}
+
+.sponsor-classroom__price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: var(--space-xs);
+}
+
+.sponsor-classroom__price span {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.sponsor-classroom p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.sponsor-classroom .btn {
+  width: 100%;
+}
+
+.donation-item__avatar--anon {
+  background: var(--light);
+  color: var(--text-muted);
 }
 
 .donation-item__info { flex: 1; }
@@ -1765,41 +1902,30 @@ section {
   z-index: 0;
 }
 
-/* --- Cinematic Open Animation --- */
+/* --- Cinematic Open Animation (GPU-only: opacity + transform) --- */
 .lp-hero__media-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  transform: scale(1.15);
-  animation: heroImageReveal 4s var(--ease-out) forwards;
+  will-change: transform;
+  animation: heroImageReveal 2s var(--ease-out) forwards;
 }
 
 @keyframes heroImageReveal {
-  0% {
-    transform: scale(1.25);
-    filter: brightness(0.3) saturate(0);
-  }
-  40% {
-    filter: brightness(0.6) saturate(0.5);
-  }
-  100% {
-    transform: scale(1.05);
-    filter: brightness(1) saturate(1);
-  }
+  from { transform: scale(1.12); }
+  to { transform: scale(1.03); }
 }
 
 .lp-hero__overlay {
-  animation: overlaySettle 3s var(--ease-out) forwards;
+  opacity: 0;
+  will-change: opacity;
+  animation: overlayFadeIn 1.2s ease forwards;
 }
 
-@keyframes overlaySettle {
-  0% {
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
-  }
-  100% {
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.05) 100%);
-  }
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .lp-hero__media-placeholder {
@@ -1838,7 +1964,7 @@ section {
   letter-spacing: -0.04em;
   margin-bottom: var(--space-lg);
   text-shadow: 0 0 60px rgba(0, 0, 0, 0.5), 0 0 120px rgba(0, 0, 0, 0.3);
-  animation: fadeInUp 1.2s var(--ease-out) 1s both;
+  animation: fadeInUp 0.8s var(--ease-out) 0.4s both;
 }
 
 .lp-hero__headline em {
@@ -1855,11 +1981,11 @@ section {
   max-width: 480px;
   margin-bottom: var(--space-2xl);
   text-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-  animation: fadeInUp 1.2s var(--ease-out) 1.5s both;
+  animation: fadeInUp 0.8s var(--ease-out) 0.65s both;
 }
 
 .lp-hero__actions {
-  animation: fadeInUp 1.2s var(--ease-out) 2s both;
+  animation: fadeInUp 0.8s var(--ease-out) 0.85s both;
 }
 
 .lp-hero__scroll-hint {
@@ -1867,7 +1993,7 @@ section {
   bottom: var(--space-2xl);
   left: 50%;
   transform: translateX(-50%);
-  animation: fadeIn 1s var(--ease-out) 3s both;
+  animation: fadeIn 0.8s var(--ease-out) 1.2s both;
 }
 
 .lp-hero__scroll-hint span {
@@ -2470,7 +2596,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-3xl);
-  align-items: start;
+  align-items: stretch;
 }
 
 .lp-transparency__text .eyebrow {
@@ -2487,6 +2613,26 @@ section {
   font-size: 1.0625rem;
   line-height: 1.8;
   margin-bottom: var(--space-2xl);
+}
+
+.lp-transparency__visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.lp-transparency__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 768px) {
+  .lp-transparency__visual {
+    min-height: 300px;
+    max-height: 400px;
+  }
 }
 
 .lp-transparency__reports {
@@ -3007,6 +3153,99 @@ section {
 }
 
 
+/* --- Expense Pie Chart (transparency section) --- */
+.lp-transparency__chart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  margin: var(--space-xl) 0;
+}
+
+.pie-chart svg {
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+}
+
+.pie-chart__legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 0.9rem;
+}
+
+.pie-chart__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text-muted);
+}
+
+.pie-chart__item strong {
+  color: var(--dark);
+  margin-left: auto;
+  padding-left: var(--space-md);
+}
+
+.pie-chart__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lp-transparency__financials {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.lp-transparency__fin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.875rem;
+}
+
+.lp-transparency__fin-label {
+  color: var(--text-muted);
+}
+
+.lp-transparency__fin-value {
+  font-weight: 700;
+  color: var(--dark);
+  font-family: var(--font-display);
+}
+
+.lp-transparency__note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: var(--space-md);
+  line-height: 1.5;
+}
+
+.lp-transparency__contact {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+}
+
+.lp-transparency__contact a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .lp-transparency__chart {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* --- Trust Badges (transparency section) --- */
 .trust-badges {
   display: flex;
@@ -3393,14 +3632,14 @@ section {
 
 /* --- Lighter hero animation for mobile --- */
 @keyframes heroRevealMobile {
-  0% { transform: scale(1.08); filter: brightness(0.4); }
-  100% { transform: scale(1.02); filter: brightness(1); }
+  from { transform: scale(1.06); }
+  to { transform: scale(1.02); }
 }
 
 /* --- Simple slide-up for mobile text entrance --- */
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(16px) translateZ(0); }
+  to { opacity: 1; transform: translateY(0) translateZ(0); }
 }
 
 /* --- Sticky Mobile CTA (hidden on desktop) --- */
@@ -3428,36 +3667,7 @@ section {
     padding: 0 1.25rem;
   }
 
-  /* -- Lighter animations: remove blur for mobile GPU perf -- */
-  .reveal {
-    filter: none;
-    transform: translateY(16px);
-    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-  }
-  .reveal.visible {
-    filter: none;
-    transform: translateY(0);
-  }
-
-  .reveal-left {
-    filter: none;
-    transform: translateX(-12px);
-    transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-  }
-  .reveal-left.visible {
-    filter: none;
-    transform: translateX(0);
-  }
-
-  .stagger-children > * {
-    filter: none;
-    transform: translateY(12px);
-    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
-  }
-  .stagger-children.visible > * {
-    filter: none;
-    transform: translateY(0);
-  }
+  /* -- Animations already blur-free, just keep mobile snappy -- */
 
   /* -- Quick-Give Bar — compact grid -- */
   .lp-quickgive__bar {

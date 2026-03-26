@@ -20,7 +20,7 @@
     'Quiché': '#146BF6',
     'Chimaltenango': '#0F52BF',
     'Sololá': '#1E88E5',
-    'Totonicapán': '#3B82F6',
+    'Huehuetenango': '#3B82F6',
     'Sacatepéquez': '#2563EB'
   };
 

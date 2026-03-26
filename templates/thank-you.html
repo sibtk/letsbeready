@@ -19,7 +19,7 @@
   <nav class="nav nav--scrolled" id="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
-        <img src="https://static.wixstatic.com/media/b86cca_fad6ad16645e42dca07079533d335af6~mv2.png/v1/fill/w_80,h_80,al_c,q_85/cropped-cropped-logo-1-e1497444809475.png" alt="Let's Be Ready" width="40" height="40">
+        <img src="{{logo_url}}" alt="Let's Be Ready" width="40" height="40">
         Let's Be Ready
       </a>
       <ul class="nav__links">
@@ -27,6 +27,7 @@
         <li><a href="index.html#proof" class="nav__link">Results</a></li>
         <li><a href="index.html#transparency" class="nav__link">Transparency</a></li>
         <li><a href="index.html#team" class="nav__link">Team</a></li>
+        <li><a href="nutrition.html" class="nav__link">Nutrition</a></li>
         <li><a href="partners.html" class="nav__link">Partners</a></li>
       </ul>
       <a href="donate.html" class="btn btn-primary btn-sm nav__cta">Give Again</a>
@@ -41,6 +42,7 @@
       <li><a href="index.html#story" class="mobile-menu__link">Our Story</a></li>
       <li><a href="index.html#proof" class="mobile-menu__link">Results</a></li>
       <li><a href="index.html#transparency" class="mobile-menu__link">Transparency</a></li>
+      <li><a href="nutrition.html" class="mobile-menu__link">Nutrition</a></li>
       <li><a href="partners.html" class="mobile-menu__link">Partners</a></li>
       <li><a href="donate.html" class="btn btn-primary btn-lg" style="margin-top:1rem;">Give Again</a></li>
     </ul>
@@ -69,15 +71,15 @@
 
         <!-- What happens next timeline -->
         <div class="ty__timeline">
-          <h3>What happens next</h3>
+          <h3>{{thankyou_timeline_heading}}</h3>
           <div class="ty__timeline-steps">
             <div class="ty__step">
               <div class="ty__step-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
               </div>
               <div class="ty__step-text">
-                <strong>Funds transfer</strong>
-                <span>Your donation moves securely to our Guatemala operations account.</span>
+                <strong>{{thankyou_step1_title}}</strong>
+                <span>{{thankyou_step1_text}}</span>
               </div>
             </div>
             <div class="ty__step">
@@ -85,8 +87,8 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--blue)" stroke-width="2"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
               </div>
               <div class="ty__step-text">
-                <strong>Teacher receives support</strong>
-                <span>Stipends, materials, and training reach community facilitators.</span>
+                <strong>{{thankyou_step2_title}}</strong>
+                <span>{{thankyou_step2_text}}</span>
               </div>
             </div>
             <div class="ty__step">
@@ -94,8 +96,8 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 6.042A8.967 8.967 0 016 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <div class="ty__step-text">
-                <strong>A child begins learning</strong>
-                <span>Education, nutrition, and a brighter future start in a village classroom.</span>
+                <strong>{{thankyou_step3_title}}</strong>
+                <span>{{thankyou_step3_text}}</span>
               </div>
             </div>
           </div>
@@ -103,7 +105,7 @@
 
         <!-- Share buttons -->
         <div class="ty__share">
-          <h4>Spread the word</h4>
+          <h4>{{thankyou_share_heading}}</h4>
           <div class="ty__share-buttons">
             <a id="shareTwitter" href="#" target="_blank" class="ty__share-btn ty__share-btn--twitter" aria-label="Share on X/Twitter">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -123,12 +125,12 @@
         <!-- Secondary CTA -->
         <div class="ty__cta" id="tyCta">
           <a href="donate.html?amount=25" class="btn btn-primary btn-lg" id="tyCtaBtn">Become a Monthly Supporter</a>
-          <p class="ty__cta-note">Even $25/month provides daily nutrition for a child.</p>
+          <p class="ty__cta-note">{{thankyou_cta_note}}</p>
         </div>
 
         <!-- Trust line -->
         <div class="ty__trust">
-          Your receipt has been sent. Tax-deductible under 501(c)(3). EIN available upon request.
+          {{thankyou_trust_text}}
         </div>
 
       </div>
@@ -142,7 +144,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html" class="nav__logo" style="color:var(--white); margin-bottom:var(--space-md); display:inline-flex;">Let's Be Ready</a>
-          <p>A 501(c)(3) nonprofit transforming preschool education in rural Guatemala since 2008.</p>
+          <p>{{footer_description}}</p>
           <div class="footer__social">
             <a href="https://www.facebook.com/LetsbereadyGT" target="_blank" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
             <a href="https://www.instagram.com/letsbereadygt/" target="_blank" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -173,7 +175,7 @@
           </form>
           <div style="margin-top:var(--space-xl);">
             <div class="footer__heading">Address</div>
-            <p style="font-size:0.875rem;">1014 Pauline Avenue<br>Bellaire, Texas 77401</p>
+            <p style="font-size:0.875rem;">{{org_address}}</p>
           </div>
         </div>
       </div>
@@ -183,7 +185,7 @@
         <span class="footer__pill">Since 2008</span>
       </div>
       <div class="footer__bottom">
-        <span>&copy; 2025 Let's Be Ready. 501(c)(3) Nonprofit.</span>
+        <span>&copy; {{copyright_year}} Let's Be Ready. 501(c)(3) Nonprofit.</span>
         <span>All donations are tax-deductible.</span>
       </div>
     </div>
@@ -193,12 +195,12 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // --- Read URL parameters ---
-      // Supports both Donorbox params and legacy params
+      // Supports GoLively params and generic params
       const params = new URLSearchParams(window.location.search);
       const name = params.get('donor_name') || params.get('name') || 'Friend';
       const amount = parseInt(params.get('donation_amount') || params.get('amount'), 10) || 0;
-      const donorboxFreq = params.get('donation_frequency') || '';
-      const frequency = donorboxFreq === 'monthly' || params.get('frequency') === 'monthly' ? 'monthly' : 'one-time';
+      const freq = params.get('donation_frequency') || params.get('frequency') || '';
+      const frequency = freq === 'monthly' ? 'monthly' : 'one-time';
 
       // --- Populate name ---
       const nameEl = document.getElementById('tyName');
@@ -234,7 +236,7 @@
       }
 
       // --- Share buttons ---
-      const shareText = `I just donated to Let's Be Ready to help educate children in rural Guatemala. $300 educates a child for a full year. Join me:`;
+      const shareText = `I just donated to Let's Be Ready to help educate children in rural Guatemala. 95% of our students pass first grade. Join me:`;
       const shareUrl = 'https://www.letsbeready.org/donate.html';
 
       const twitterBtn = document.getElementById('shareTwitter');

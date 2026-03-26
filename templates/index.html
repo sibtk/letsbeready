@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Let's Be Ready — $300 Changes a Child's Life</title>
-  <meta name="description" content="In rural Guatemala, most children never see a classroom. We changed that. 95% of our students pass first grade. $300 educates one child for a year.">
-  <meta property="og:title" content="Let's Be Ready — $300 Changes a Child's Life">
-  <meta property="og:description" content="95% of our students pass first grade. $300 educates one child for a year.">
+  <title>Let's Be Ready — Transforming Preschool Education in Guatemala</title>
+  <meta name="description" content="In rural Guatemala, most children never see a classroom. We changed that. 95% of our students pass first grade. Learn how you can help.">
+  <meta property="og:title" content="Let's Be Ready — Transforming Preschool Education in Guatemala">
+  <meta property="og:description" content="95% of our students pass first grade. Learn how you can help.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.letsbeready.org">
 
@@ -23,7 +23,7 @@
   <nav class="nav nav--hero" id="nav">
     <div class="nav__inner">
       <a href="/" class="nav__logo">
-        <img src="https://static.wixstatic.com/media/b86cca_fad6ad16645e42dca07079533d335af6~mv2.png/v1/fill/w_80,h_80,al_c,q_85/cropped-cropped-logo-1-e1497444809475.png" alt="Let's Be Ready" width="40" height="40">
+        <img src="{{logo_url}}" alt="Let's Be Ready" width="40" height="40">
         Let's Be Ready
       </a>
       <ul class="nav__links">
@@ -31,6 +31,7 @@
         <li><a href="#proof" class="nav__link">Results</a></li>
         <li><a href="#transparency" class="nav__link">Transparency</a></li>
         <li><a href="#team" class="nav__link">Team</a></li>
+        <li><a href="nutrition.html" class="nav__link">Nutrition</a></li>
         <li><a href="partners.html" class="nav__link">Partners</a></li>
       </ul>
       <a href="donate.html" class="btn btn-primary btn-sm nav__cta">Give Now</a>
@@ -46,6 +47,7 @@
       <li><a href="#proof" class="mobile-menu__link">Results</a></li>
       <li><a href="#transparency" class="mobile-menu__link">Transparency</a></li>
       <li><a href="#team" class="mobile-menu__link">Team</a></li>
+      <li><a href="nutrition.html" class="mobile-menu__link">Nutrition</a></li>
       <li><a href="partners.html" class="mobile-menu__link">Partners</a></li>
       <li><a href="donate.html" class="btn btn-primary btn-lg" style="margin-top:1.5rem;">Give Now</a></li>
     </ul>
@@ -58,8 +60,8 @@
   <section class="lp-hero">
     <div class="lp-hero__media">
       <img
-        src="https://static.wixstatic.com/media/b86cca_0e2ea1940ac44331a21dd51fd50d9a5a~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_85/Teacher%20and%20students.JPG"
-        alt="A teacher with young students in a rural Guatemalan classroom"
+        src="{{hero_image_url}}"
+        alt="{{hero_image_alt}}"
         class="lp-hero__media-img"
         loading="eager"
       >
@@ -68,17 +70,15 @@
 
     <div class="lp-hero__content">
       <h1 class="lp-hero__headline">
-        She almost never<br>
-        saw a <em>classroom.</em>
+        {{hero_headline}}
       </h1>
       <p class="lp-hero__sub">
-        In rural Guatemala, preschool doesn't exist.<br>
-        We're changing that &mdash; one village at a time.
+        {{hero_sub}}
       </p>
       <div class="lp-hero__actions">
         <a href="donate.html" class="btn btn-glass btn-lg">
           <span class="btn-glass__shimmer"></span>
-          Give $300 &mdash; Educate a Child for a Year
+          {{hero_cta_text}}
         </a>
       </div>
       <div class="lp-hero__scroll-hint" aria-hidden="true">
@@ -88,23 +88,6 @@
   </section>
 
 
-  <!-- ============================================================
-       QUICK-GIVE BAR — Reduce friction from homepage
-       ============================================================ -->
-  <section class="lp-quickgive">
-    <div class="container">
-      <div class="lp-quickgive__bar">
-        <span class="lp-quickgive__label">Give now:</span>
-        <div class="lp-quickgive__amounts">
-          <a href="donate.html?amount=25" class="lp-quickgive__btn">$25</a>
-          <a href="donate.html?amount=50" class="lp-quickgive__btn">$50</a>
-          <a href="donate.html?amount=100" class="lp-quickgive__btn">$100</a>
-          <a href="donate.html?amount=300" class="lp-quickgive__btn lp-quickgive__btn--featured">$300 <span>Full Year</span></a>
-        </div>
-        <a href="donate.html" class="lp-quickgive__custom">Other amount &rarr;</a>
-      </div>
-    </div>
-  </section>
 
 
   <!-- ============================================================
@@ -113,10 +96,9 @@
   <section class="lp-disparity" id="story">
     <div class="container container--narrow">
       <div class="lp-disparity__block reveal">
-        <span class="eyebrow" style="color: var(--text-muted);">The Reality</span>
+        <span class="eyebrow" style="color: var(--text-muted);">{{disparity_eyebrow}}</span>
         <h2 class="lp-disparity__headline">
-          In Guatemala, a child born in a rural Mayan village
-          has a <em>1 in 5</em> chance of finishing primary school.
+          {{disparity_headline}}
         </h2>
       </div>
 
@@ -126,7 +108,7 @@
             <div class="lp-disparity__bar" style="--bar-width: 80%;"></div>
           </div>
           <div class="lp-disparity__stat-text">
-            <strong>80%</strong> of rural children drop out before finishing primary school
+            <strong>{{disparity_stat1_value}}</strong> {{disparity_stat1_text}}
           </div>
         </div>
         <div class="lp-disparity__stat">
@@ -134,7 +116,7 @@
             <div class="lp-disparity__bar" style="--bar-width: 100%;"></div>
           </div>
           <div class="lp-disparity__stat-text">
-            <strong>Zero</strong> preschool options in most rural villages
+            <strong>{{disparity_stat2_value}}</strong> {{disparity_stat2_text}}
           </div>
         </div>
         <div class="lp-disparity__stat">
@@ -142,7 +124,7 @@
             <div class="lp-disparity__bar" style="--bar-width: 65%;"></div>
           </div>
           <div class="lp-disparity__stat-text">
-            Communities so remote they're <strong>invisible</strong> to the education system
+            <strong>{{disparity_stat3_value}}</strong> {{disparity_stat3_text}}
           </div>
         </div>
       </div>
@@ -156,10 +138,9 @@
   <section class="lp-turn">
     <div class="container container--narrow">
       <div class="lp-turn__content reveal">
-        <div class="lp-turn__word">But.</div>
+        <div class="lp-turn__word">{{turn_word}}</div>
         <h2>
-          What if the solution was already<br>
-          inside the community?
+          {{turn_question}}
         </h2>
       </div>
     </div>
@@ -176,16 +157,14 @@
         <div class="lp-model__step reveal-left">
           <div class="lp-model__step-number">01</div>
           <img
-            src="https://static.wixstatic.com/media/b86cca_527419ab121c4c938652b89e1b7eedea~mv2.jpg/v1/fill/w_800,h_600,al_c,q_80/IMG_20240801_155859.jpg"
-            alt="A young facilitator being trained to teach preschool"
+            src="{{model_step1_image_url}}"
+            alt="{{model_step1_image_alt}}"
             class="lp-model__step-image"
           >
           <div class="lp-model__step-content">
-            <h3>A young woman from the village steps forward.</h3>
+            <h3>{{model_step1_title}}</h3>
             <p>
-              She's newly literate. She cares deeply about her community.
-              We train her with a culturally adapted curriculum &mdash;
-              three manuals built specifically for Mayan communities.
+              {{model_step1_text}}
             </p>
           </div>
         </div>
@@ -193,16 +172,14 @@
         <div class="lp-model__step lp-model__step--reverse reveal-left">
           <div class="lp-model__step-number">02</div>
           <img
-            src="https://static.wixstatic.com/media/b86cca_e222394152f44f719607544671f2bca9~mv2.jpg/v1/fill/w_800,h_600,al_c,q_80/Our-approach-in-guatermala-2024.jpg"
-            alt="Children learning in a community classroom in rural Guatemala"
+            src="{{model_step2_image_url}}"
+            alt="{{model_step2_image_alt}}"
             class="lp-model__step-image"
           >
           <div class="lp-model__step-content">
-            <h3>She opens a classroom in her home.</h3>
+            <h3>{{model_step2_title}}</h3>
             <p>
-              12 to 15 children, ages 4 to 6, learn in small groups
-              for 2&ndash;3 hours a day. No building needed. No bureaucracy.
-              Just a room, a teacher, and a curriculum that works.
+              {{model_step2_text}}
             </p>
           </div>
         </div>
@@ -210,17 +187,14 @@
         <div class="lp-model__step reveal-left">
           <div class="lp-model__step-number">03</div>
           <img
-            src="https://static.wixstatic.com/media/b86cca_62cd990a9ac24c0e9f57b707a375c718~mv2.jpg/v1/fill/w_800,h_600,al_c,q_80/20240313_142741-1-2-scaled.jpg"
-            alt="Happy children in a Let's Be Ready preschool classroom"
+            src="{{model_step3_image_url}}"
+            alt="{{model_step3_image_alt}}"
             class="lp-model__step-image"
           >
           <div class="lp-model__step-content">
-            <h3>Children discover what's possible.</h3>
+            <h3>{{model_step3_title}}</h3>
             <p>
-              Education. Daily nutrition. Gardening. Art.
-              Social-emotional skills. Two years in our program,
-              and these children are ready for first grade &mdash;
-              and for a different kind of life.
+              {{model_step3_text}}
             </p>
           </div>
         </div>
@@ -237,44 +211,40 @@
     <div class="lp-proof__bg"></div>
     <div class="container">
       <div class="lp-proof__header reveal">
-        <span class="eyebrow" style="color: var(--yellow);">Proof, Not Promises</span>
-        <h2>This works. Here are the numbers.</h2>
+        <span class="eyebrow" style="color: var(--yellow);">{{proof_eyebrow}}</span>
+        <h2>{{proof_heading}}</h2>
       </div>
 
       <div class="lp-proof__grid stagger-children">
         <div class="lp-proof__card">
-          <div class="lp-proof__number" data-count="95" data-suffix="%">0</div>
-          <div class="lp-proof__label">pass first grade</div>
+          <div class="lp-proof__number" data-count="{{stat_pass_rate}}" data-suffix="%">0</div>
+          <div class="lp-proof__label">{{stat_pass_rate_label}}</div>
           <div class="lp-proof__context">
-            The national rural average is under 20%.
-            Our kids pass at <strong>95%</strong>.
+            {{stat_pass_rate_context}}
           </div>
         </div>
 
         <div class="lp-proof__card">
-          <div class="lp-proof__number" data-count="600" data-prefix="">0</div>
-          <div class="lp-proof__label">children learning right now</div>
+          <div class="lp-proof__number" data-count="{{stat_children}}" data-prefix="">0</div>
+          <div class="lp-proof__label">{{stat_children_label}}</div>
           <div class="lp-proof__context">
-            Across 55 classrooms in 5 departments
-            of Guatemala, as of 2025.
+            {{stat_children_context}}
           </div>
         </div>
 
         <div class="lp-proof__card">
-          <div class="lp-proof__number">8 <span style="font-size:0.5em;opacity:0.5;">out of</span> 10</div>
-          <div class="lp-proof__label">finish primary school</div>
+          <div class="lp-proof__number">{{stat_graduation_value}}</div>
+          <div class="lp-proof__label">{{stat_graduation_label}}</div>
           <div class="lp-proof__context">
-            Most rural children drop out in year one.
-            Our graduates keep going.
+            {{stat_graduation_context}}
           </div>
         </div>
 
         <div class="lp-proof__card">
-          <div class="lp-proof__number">17 <span style="font-size:0.5em;opacity:0.5;">yrs</span></div>
-          <div class="lp-proof__label">proven track record</div>
+          <div class="lp-proof__number">{{stat_years_value}}</div>
+          <div class="lp-proof__label">{{stat_years_label}}</div>
           <div class="lp-proof__context">
-            Founded in 2008. Not a pilot. Not an experiment.
-            A proven, replicable model.
+            {{stat_years_context}}
           </div>
         </div>
       </div>
@@ -289,23 +259,22 @@
     <div class="container">
       <div class="lp-map__layout reveal">
         <div class="lp-map__text">
-          <span class="eyebrow">See the Impact</span>
-          <h2>55 classrooms.<br>5 departments.<br>One map.</h2>
+          <span class="eyebrow">{{map_eyebrow}}</span>
+          <h2>{{map_heading}}</h2>
           <p>
-            Every pin is a real classroom, run by a real teacher,
-            in a real community. Click to meet them.
+            {{map_description}}
           </p>
           <div class="lp-map__stat-row">
             <div class="lp-map__stat">
-              <strong id="mapCommunities">55</strong>
+              <strong id="mapCommunities">45</strong>
               <span>Communities</span>
             </div>
             <div class="lp-map__stat">
-              <strong id="mapTeachers">55</strong>
+              <strong id="mapTeachers">45</strong>
               <span>Teachers</span>
             </div>
             <div class="lp-map__stat">
-              <strong id="mapChildren">612</strong>
+              <strong id="mapChildren">600</strong>
               <span>Children</span>
             </div>
           </div>
@@ -324,37 +293,21 @@
   <section class="lp-cost">
     <div class="container container--narrow">
       <div class="lp-cost__content reveal">
-        <span class="eyebrow">The Cost of Change</span>
+        <span class="eyebrow">{{cost_eyebrow}}</span>
         <div class="lp-cost__comparison">
           <div class="lp-cost__item">
-            <div class="lp-cost__amount">$300</div>
+            <div class="lp-cost__amount">{{cost_per_classroom}}</div>
             <div class="lp-cost__desc">
-              One child. One full year of<br>preschool education.
+              {{cost_classroom_desc}}
             </div>
-          </div>
-          <div class="lp-cost__divider">
-            <span>or</span>
-          </div>
-          <div class="lp-cost__item">
-            <a href="donate.html?amount=3800" style="text-decoration:none; color:inherit;">
-              <div class="lp-cost__amount">$3,800</div>
-              <div class="lp-cost__desc">
-                An entire classroom of 12&ndash;15<br>children for a full year.
-              </div>
-            </a>
           </div>
         </div>
         <p class="lp-cost__context">
-          That's less than a dollar a day. The model is so efficient because
-          teachers are from the community, classrooms are in homes, and
-          the curriculum was built specifically for this context.
+          {{cost_context}}
         </p>
         <a href="donate.html" class="btn btn-primary btn-lg">
-          Give Now &mdash; 100% Goes to Children
+          {{cost_cta_text}}
         </a>
-        <span class="lp-cost__note">
-          Zero overhead. Donors can cover the processing fee so every cent reaches Guatemala.
-        </span>
       </div>
     </div>
   </section>
@@ -366,8 +319,8 @@
   <section class="lp-allocation">
     <div class="container">
       <div class="section-header text-center reveal">
-        <span class="eyebrow">Where Your Money Goes</span>
-        <h2>Every dollar is accounted for</h2>
+        <span class="eyebrow">{{allocation_heading}}</span>
+        <h2>{{allocation_subheading}}</h2>
       </div>
 
       <div class="lp-allocation__grid stagger-children">
@@ -375,29 +328,29 @@
           <div class="lp-allocation__icon">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="12" r="6" stroke="var(--blue)" stroke-width="2"/><path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h4>Teacher Stipends</h4>
-          <p>Monthly pay for 55 community facilitators, deposited directly into their personal bank accounts.</p>
+          <h4>{{allocation_item1_title}}</h4>
+          <p>{{allocation_item1_desc}}</p>
         </div>
         <div class="lp-allocation__item">
           <div class="lp-allocation__icon">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="18" rx="3" stroke="var(--blue)" stroke-width="2"/><path d="M4 14h24M10 4v4M22 4v4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h4>Curriculum & Materials</h4>
-          <p>Three custom teaching manuals, educational supplies, and training sessions three times per year.</p>
+          <h4>{{allocation_item2_title}}</h4>
+          <p>{{allocation_item2_desc}}</p>
         </div>
         <div class="lp-allocation__item">
           <div class="lp-allocation__icon">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 6c-4 0-10 2-10 8s4 10 10 12c6-2 10-6 10-12S20 6 16 6z" stroke="var(--blue)" stroke-width="2"/><path d="M12 16l3 3 5-6" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h4>Child Nutrition</h4>
-          <p>Daily nutritional snacks for every student. You can't learn when you're hungry.</p>
+          <h4>{{allocation_item3_title}}</h4>
+          <p>{{allocation_item3_desc}}</p>
         </div>
         <div class="lp-allocation__item">
           <div class="lp-allocation__icon">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4v6M16 22v6M4 16h6M22 16h6M7.5 7.5l4.2 4.2M20.3 20.3l4.2 4.2M7.5 24.5l4.2-4.2M20.3 11.7l4.2-4.2" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h4>Extension Programs</h4>
-          <p>Gardening, art, environmental awareness, and social-emotional learning that builds the whole child.</p>
+          <h4>{{allocation_item4_title}}</h4>
+          <p>{{allocation_item4_desc}}</p>
         </div>
       </div>
     </div>
@@ -411,32 +364,31 @@
     <div class="container">
       <div class="lp-transparency__split">
         <div class="lp-transparency__text reveal">
-          <span class="eyebrow">Full Transparency</span>
-          <h2>We believe you deserve to<br>know everything</h2>
+          <span class="eyebrow">{{transparency_eyebrow}}</span>
+          <h2>{{transparency_heading}}</h2>
           <p>
-            Our 501(c)(3) corporate account at Charles Schwab is managed by a certified
-            accountant. Funds transfer monthly to Guatemala, requiring dual signatures.
-            Directors and our Guatemalan accountant review every expense monthly.
-            Teachers receive stipends directly in their bank accounts.
+            {{transparency_text}}
           </p>
 
-          <div class="lp-transparency__reports">
-            <h4>Public Tax Filings</h4>
-            <div class="lp-transparency__report-links">
-              <a href="https://letsbeready.org/wp-content/uploads/2024/12/2023-Form-990_LETS-BE-READY_public.pdf" target="_blank" class="lp-transparency__report-link">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 14h8a1 1 0 001-1V5l-4-4H4a1 1 0 00-1 1v11a1 1 0 001 1z" stroke="currentColor" stroke-width="1.5"/><path d="M9 1v4h4M6 9h4M6 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                2023 Form 990
-              </a>
-              <a href="https://letsbeready.org/wp-content/uploads/2023/03/990Taxes-2022.pdf" target="_blank" class="lp-transparency__report-link">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 14h8a1 1 0 001-1V5l-4-4H4a1 1 0 00-1 1v11a1 1 0 001 1z" stroke="currentColor" stroke-width="1.5"/><path d="M9 1v4h4M6 9h4M6 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                2022 Form 990
-              </a>
-              <a href="https://letsbeready.org/wp-content/uploads/2023/03/990-ez-2020.pdf" target="_blank" class="lp-transparency__report-link">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 14h8a1 1 0 001-1V5l-4-4H4a1 1 0 00-1 1v11a1 1 0 001 1z" stroke="currentColor" stroke-width="1.5"/><path d="M9 1v4h4M6 9h4M6 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                2021 Form 990
-              </a>
+          <!-- Expense Pie Chart (generated from Expense Allocation sheet) -->
+          <div class="lp-transparency__chart">
+            {{pie_chart_svg}}
+            {{pie_chart_legend}}
+            <div class="lp-transparency__financials">
+              <div class="lp-transparency__fin-item">
+                <span class="lp-transparency__fin-label">{{finance_year}} donations received</span>
+                <span class="lp-transparency__fin-value">{{finance_total_donated}}</span>
+              </div>
+              <div class="lp-transparency__fin-item">
+                <span class="lp-transparency__fin-label">{{finance_year}} total expenditures</span>
+                <span class="lp-transparency__fin-value">{{finance_total_spent}}</span>
+              </div>
             </div>
+            <p class="lp-transparency__note">{{finance_note}}</p>
           </div>
+          <p class="lp-transparency__contact">
+            Have questions about our finances? <a href="mailto:contact@letsbeready.org">We're happy to share more.</a>
+          </p>
 
           <!-- Trust Badges -->
           <div class="trust-badges">
@@ -460,39 +412,24 @@
             </div>
             <div class="trust-badge">
               <div class="trust-badge__icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="var(--blue)" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="var(--blue)" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="var(--blue)" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="var(--blue)" stroke-width="2"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" stroke="var(--blue)" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <div class="trust-badge__text">
                 <strong>100% Transparent</strong>
-                <span>Public 990s, open books</span>
+                <span>Open books, accountable to you</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="lp-transparency__card reveal">
-          <div class="lp-transparency__card-header">
-            <h4>Fee Comparison: $100 Donation</h4>
-          </div>
-          <div class="lp-transparency__fee-row lp-transparency__fee-row--highlight">
-            <div class="lp-transparency__fee-platform">Direct (Donorbox)</div>
-            <div class="lp-transparency__fee-pct">~5.15%</div>
-            <div class="lp-transparency__fee-result">$94.85 reaches children</div>
-          </div>
-          <div class="lp-transparency__fee-row">
-            <div class="lp-transparency__fee-platform">PayPal</div>
-            <div class="lp-transparency__fee-pct">3.2%</div>
-            <div class="lp-transparency__fee-result">$96.80</div>
-          </div>
-          <div class="lp-transparency__fee-row lp-transparency__fee-row--bad">
-            <div class="lp-transparency__fee-platform">GlobalGiving</div>
-            <div class="lp-transparency__fee-pct">15%</div>
-            <div class="lp-transparency__fee-result">$85.00</div>
-          </div>
-          <div class="lp-transparency__fee-footer">
-            Most donors cover the fee so 100% reaches children. Donorbox makes this easy with one click.
-          </div>
+        <div class="lp-transparency__visual reveal">
+          <img
+            src="{{transparency_image_url}}"
+            alt="{{transparency_image_alt}}"
+            loading="lazy"
+          >
         </div>
+
       </div>
     </div>
   </section>
@@ -504,57 +441,24 @@
   <section class="lp-team" id="team">
     <div class="container">
       <div class="section-header text-center reveal">
-        <span class="eyebrow">The People Behind This</span>
-        <h2>Run by Guatemalan women.<br>Supported by people like you.</h2>
+        <span class="eyebrow">{{team_eyebrow}}</span>
+        <h2>{{team_heading}}</h2>
       </div>
 
       <div class="lp-team__grid stagger-children">
+        {{#each team_members}}
         <div class="lp-team__card">
-          <img
-            src="https://static.wixstatic.com/media/b86cca_b2b0b92f951a49b58fd9b13fa5451327~mv2.png/v1/fill/w_200,h_200,al_c,q_85/Screen%20Shot%202025-03-21%20at%2012_08_07%20PM.png"
-            alt="Garrett Reed"
-            class="lp-team__photo"
-          >
-          <div class="lp-team__name">Garrett Reed</div>
-          <div class="lp-team__role">Executive Director</div>
-          <p>30+ years as a teacher and trainer, working with immigrant and refugee students from Latin America.</p>
+          <img src="{{photo_url}}" alt="{{name}}" class="lp-team__photo">
+          <div class="lp-team__name">{{name}}</div>
+          <div class="lp-team__role">{{role}}</div>
+          <p>{{bio}}</p>
         </div>
-        <div class="lp-team__card">
-          <img
-            src="https://static.wixstatic.com/media/b86cca_5318727af2474f878016b2f3f25aa61f~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80/3dd7b745-361b-4106-a3aa-0d12407f3a7c_JPG.jpg"
-            alt="Sara Tun"
-            class="lp-team__photo"
-          >
-          <div class="lp-team__name">Sara Tun</div>
-          <div class="lp-team__role">Program Coordinator, Guatemala</div>
-          <p>Leads 28 teachers across 25 communities in Chimaltenango and Sacatep&eacute;quez.</p>
-        </div>
-        <div class="lp-team__card">
-          <img
-            src="https://static.wixstatic.com/media/b86cca_527419ab121c4c938652b89e1b7eedea~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80/IMG_20240801_155859.jpg"
-            alt="Lucila Diaz"
-            class="lp-team__photo"
-          >
-          <div class="lp-team__name">Lucila Diaz</div>
-          <div class="lp-team__role">Curriculum Administrator</div>
-          <p>Created three teaching manuals and trains Aula M&aacute;gica facilitators three times a year.</p>
-        </div>
-        <div class="lp-team__card">
-          <img
-            src="https://static.wixstatic.com/media/b86cca_d6bf45f20b3949b38c1015d5323e8134~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80/IMG_0708-1536x1283-1.jpg"
-            alt="Fred Zambroski"
-            class="lp-team__photo"
-          >
-          <div class="lp-team__name">Fred Zambroski</div>
-          <div class="lp-team__role">Founder</div>
-          <p>&ldquo;This project was started by a Guatemalan woman and is currently run by Guatemalan women.&rdquo;</p>
-        </div>
+        {{/each}}
       </div>
 
       <div class="lp-team__footer reveal">
         <p>
-          Our board includes educators, nonprofit leaders, and professionals
-          who volunteer their time. Every dollar raised goes to Guatemala.
+          {{team_footer_text}}
         </p>
       </div>
     </div>
@@ -568,11 +472,9 @@
     <div class="container container--narrow">
       <blockquote class="lp-quote__block reveal">
         <p>
-          &ldquo;Dedicated men and women believe that <em>all</em> children
-          in their communities deserve access to early education.
-          They opened preschools in their homes, and they changed everything.&rdquo;
+          {{founder_quote}}
         </p>
-        <cite>&mdash; Let's Be Ready, 2025</cite>
+        <cite>{{founder_quote_cite}}</cite>
       </blockquote>
     </div>
   </section>
@@ -585,16 +487,13 @@
     <div class="container container--narrow">
       <div class="lp-final-cta__content reveal">
         <h2>
-          Thousands of children<br>
-          are still waiting.
+          {{final_cta_heading}}
         </h2>
         <p>
-          We have 55 classrooms. Thousands more are needed.
-          The model works. The teachers are ready.
-          The only thing missing is funding.
+          {{final_cta_text}}
         </p>
         <a href="donate.html" class="btn btn-secondary btn-lg">
-          Donate Now &mdash; $300 Educates a Child for a Year
+          {{final_cta_button}}
         </a>
         <div class="lp-final-cta__trust">
           <span>501(c)(3) tax-deductible</span>
@@ -617,9 +516,7 @@
             Let's Be Ready
           </a>
           <p>
-            Empowerment and transformation through education.
-            A 501(c)(3) nonprofit transforming preschool education
-            in rural Guatemala since 2008.
+            {{footer_description}}
           </p>
           <div class="footer__social">
             <a href="https://www.facebook.com/LetsbereadyGT" target="_blank" aria-label="Facebook">
@@ -639,6 +536,7 @@
             <li><a href="#story">Our Story</a></li>
             <li><a href="#proof">Results</a></li>
             <li><a href="#transparency">Transparency</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
             <li><a href="#team">Our Team</a></li>
           </ul>
         </div>
@@ -659,8 +557,7 @@
           <div style="margin-top: var(--space-xl);">
             <div class="footer__heading">Address</div>
             <p style="font-size: 0.875rem;">
-              1014 Pauline Avenue<br>
-              Bellaire, Texas 77401
+              {{org_address}}
             </p>
           </div>
         </div>
@@ -671,16 +568,12 @@
         <span class="footer__pill">Since 2008</span>
       </div>
       <div class="footer__bottom">
-        <span>&copy; 2025 Let's Be Ready. 501(c)(3) Nonprofit Organization.</span>
+        <span>&copy; {{copyright_year}} Let's Be Ready. 501(c)(3) Nonprofit Organization.</span>
         <span>All donations are tax-deductible.</span>
       </div>
     </div>
   </footer>
 
-  <!-- Sticky Mobile CTA — appears after scrolling past hero -->
-  <div class="mobile-sticky-cta" id="mobileCta">
-    <a href="donate.html" class="btn btn-primary btn-lg">Give $300 &mdash; Educate a Child</a>
-  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="main.js"></script>
